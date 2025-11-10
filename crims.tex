@@ -1,0 +1,91 @@
+
+\section{CRIMS}
+\subsection{Webpage}
+\begin{frame}{CRIMS}
+
+	\begin{columns}[T, totalwidth=\linewidth]
+	% Left column (figure)
+	\begin{column}{0.3\linewidth}
+		\begin{itemize}
+			\item Beamline Evaluation Platform
+			\item each plate 96 conditions
+			\item drops are monitored 1h, 1-3days, 1-4weeks, -4months
+			\item some images are automatically rated
+			\item delivers negative data
+		\end{itemize}
+	\end{column}
+	\hspace{-1.4cm}
+	% Right column (text)
+	\begin{column}{1\linewidth}		
+		\centering
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.7\linewidth]{crimsScreenshot}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Rating}
+\begin{frame}{Rating}	
+	\begin{columns}[T, totalwidth=\linewidth]
+		% Left column (figure)
+		\begin{column}{0.5\linewidth}
+			\vspace{-0.4cm}
+			\begin{figure}[htbp]
+				\centering
+				% Row 1
+				\begin{subfigure}[b]{0.48\textwidth}
+					\includegraphics[width=\textwidth]{media/FORMULATRIX_SD30010705_2_01-10-2025_03_03_01_00_99_Vis-1}
+				\end{subfigure}\hspace{0.02\textwidth}% <---- reduce horizontal space
+				\begin{subfigure}[b]{0.48\textwidth}
+					\includegraphics[width=\textwidth]{media/FORMULATRIX_SD30010708_4_07-10-2025_10_06_01_00_99_Vis}
+				\end{subfigure}
+				
+				\vspace{0.02\textwidth} % <---- reduce vertical space
+				
+				% Row 2
+				\begin{subfigure}[b]{0.48\textwidth}
+					\includegraphics[width=\textwidth]{media/FORMULATRIX_SD30010708_4_07-10-2025_12_08_01_00_99_Vis}
+				\end{subfigure}\hspace{0.01\textwidth}
+				\begin{subfigure}[b]{0.48\textwidth}
+					\includegraphics[width=\textwidth]{media/FORMULATRIX_SD30010708_4_07-10-2025_06_04_01_00_99_Vis}
+				\end{subfigure}				
+				\caption{Scores: 0.99, 0.97, 0.90, 0.3}
+			\end{figure}
+		\end{column}
+		\hspace{-1cm}
+		% Right column (text)
+		\begin{column}{0.5\linewidth}		
+			\centering
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/annotations_distribution}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Conditions}
+\begin{frame}{Conditions}	
+	\begin{columns}[T, totalwidth=\linewidth]
+		% Left column (figure)
+		\begin{column}{0.5\linewidth}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/compoundDistribution}
+			\end{figure}
+				
+		\end{column}
+		\hspace{-1cm}
+		% Right column (text)
+		\begin{column}{0.5\linewidth}		
+			\centering
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/classAnnotationVsConditions}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}

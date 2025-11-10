@@ -1,0 +1,47 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\definecolor{uhhred}{RGB}{144, 74, 77}
+\definecolor{uhhred_highlight}{RGB}{226, 0, 26}
+\definecolor{ukeblue}{RGB}{105, 146, 187}
+\definecolor{ukeblue_highlight}{RGB}{0, 73, 146}
+\definecolor{neutralyellow}{RGB}{244, 199, 120}
+
+\begin{document}
+	\pagestyle{empty}
+	
+	
+	% Define block styles
+	\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+	text width=6em, text badly centered, node distance=3cm, inner sep=0pt]
+	\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+	text width=9em, text centered, rounded corners, minimum height=4em]
+	\tikzstyle{block2} = [rectangle, draw, fill=uhhred!60, 
+	text width=9em, text centered, rounded corners, minimum height=4em]
+	\tikzstyle{line} = [draw, -latex']
+	\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+	minimum height=4em]
+	
+	\begin{figure}[!ht]
+		\centering
+		\hspace*{-135pt}
+		\begin{tikzpicture}[node distance = 2cm, auto]
+			\node [block2] (crystal) {\Large Crystal};
+			\node [block2, right of = crystal, node distance = 4cm] (sequence) {\Large Sequence};
+			\node [block2, right of = sequence, node distance = 4cm] (atoms) {\Large Atom Sites};
+			\node [block2, below of = atoms, node distance = 3cm] (surface) {\Large Surface};
+			\node [block2, right of = surface, node distance = 4cm] (features) {\Large Features};
+			\node [block2, above of = sequence] (input) {\Large Input};
+			\path [line] (input) -- (sequence);
+			\path [line] (input) -| (atoms);
+			\path [line] (input) -| (crystal);
+			\path [line] (atoms) -- (features);
+			\path [line] (atoms) -- (surface);
+	
+		\end{tikzpicture}
+	\end{figure}
+	
+\end{document}
