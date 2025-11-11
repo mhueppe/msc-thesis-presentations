@@ -1,15 +1,15 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'presentation.blg'
-[235] biber-MSWIN64:342> INFO - === 
-[335] Biber.pm:421> INFO - Reading 'presentation.bcf'
-[547] Biber.pm:1002> INFO - Found 3 citekeys in bib section 0
-[584] Biber.pm:4487> INFO - Processing section 0
-[624] Biber.pm:4678> INFO - Looking for bibtex file 'sources.bib' for section 0
-[851] bibtex.pm:1713> INFO - LaTeX decoding ...
-[948] bibtex.pm:1519> INFO - Found BibTeX data source 'sources.bib'
-[1141] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1142] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1142] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1142] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[1244] bbl.pm:676> INFO - Writing 'presentation.bbl' with encoding 'UTF-8'
-[1256] bbl.pm:779> INFO - Output to presentation.bbl
+[502] biber-MSWIN64:342> INFO - === 
+[736] Biber.pm:421> INFO - Reading 'presentation.bcf'
+[845] Biber.pm:1002> INFO - Found 3 citekeys in bib section 0
+[858] Biber.pm:4487> INFO - Processing section 0
+[899] Biber.pm:4678> INFO - Looking for bibtex file 'sources.bib' for section 0
+[1026] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1082] bibtex.pm:1519> INFO - Found BibTeX data source 'sources.bib'
+[1266] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1266] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1266] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1266] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[1394] bbl.pm:676> INFO - Writing 'presentation.bbl' with encoding 'UTF-8'
+[1401] bbl.pm:779> INFO - Output to presentation.bbl
