@@ -1,0 +1,606 @@
+%-----------------------------------------------------------------------------
+% uhhBeamer.sty
+%		new version of tamsBeamer.sty for CML TRR169
+%
+% Author:	Andreas Mäder
+% 		Universität Hamburg
+%		MIN-Fakultät
+%		Fachbereich Informatik, AB TAMS
+%		Vogt-Kölln-Straße 30
+%		22527 Hamburg
+%
+%		Tel.:   040 42883-2502
+%		Fax.:   040 42883-2397
+%		e-mail: maeder@informatik.uni-hamburg.de
+%
+%-----------------------------------------------------------------------------
+%-- info	--------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{uhhBeamer}[2016/08/14 TAMS/CML-header for 'beamer' style -AJM-]
+
+%-----------------------------------------------------------------------------
+%-- extra packages	------------------------------------------------------
+\RequirePackage[ngerman, english]{babel}% languages, hyphenation
+\RequirePackage{graphicx}		% graphicx
+\RequirePackage{xcolor}			% color / xcolor
+\RequirePackage{ifthen}			%
+\RequirePackage{uri}			%
+\RequirePackage[T1]{fontenc}		%
+
+%
+%-- default fonts	------------------------------------------------------
+\renewcommand{\ttdefault}{lmtt}
+\renewcommand{\sfdefault}{lmss}
+%
+%-- definitions		------------------------------------------------------
+\def\email#1{\gdef\@email{#1}}
+\def\@email{}
+
+\def\foottitle#1{\gdef\@foottitle{#1}}
+\def\@foottitle{}
+
+\def\lefticon#1{\gdef\@lefticon{#1}}
+\def\@lefticon{UHH-only-logo}%TAMS-icon} TODO: here make an icon for both%
+
+\def\righticon#1{\gdef\@righticon{#1}}
+\def\@righticon{UKE-only-logo}%TAMS-icon} TODO: here make an icon for both%
+
+%-----------------------------------------------------------------------------
+%-- options		------------------------------------------------------
+%			german		- german language	[english]
+%			tams |		- TAMS 	header logo / colors
+%			cml		- CML 	banner + logos  -"-
+%			cmlFund		- "funded by" in CML titlepage
+%			uhhSans		- "The SansUHH" as sans serif font
+%			secHead		- use sectionnavigation as head
+%			secToc	|	- toc repetition at each section
+%			secTocA	|	- -"-, all sections: show
+%					  replacement for toc in short docs
+%			subsecToc	- toc repetition at each subsection
+%			secNum  	- (sub)-section numbering
+%			noTocNum  	- toc numbering	off
+%			fullstep	- always step through items
+%			noFoot		- footline		off
+%			noFootAuth	- footline author	off
+%			noFootTitle	- footline title	off
+%			noFootPage	- page numbers		off
+%			noFootPages	- + of total numbers	off
+%
+%-- german	--------------------------------------------------------------
+\newif\if@doGerman
+\@doGermanfalse
+\newcommand{\tocName}{Outline}			% predefined: english
+\newcommand{\uniName}{University of Hamburg}
+\newcommand{\fakName}{Faculty of Mathematics, Informatics and Natural Sciences}
+\newcommand{\fakShortName}{MIN Faculty}
+\newcommand{\infName}{Department of Informatics}
+\newcommand{\tamsName}{Maschinelles Lernen in der Bioinformatik}
+\newcommand{\trrName}{Transregio TRR\,169}
+\newcommand{\cmlName}{Crossmodal Learning}
+\newcommand{\cmlSubName}{Adaptivity, Prediction and Interaction}
+\newcommand{\cmlFundName}{funded by}
+\DeclareOption{german}{%
+\typeout{-local option: german-}%
+\@doGermantrue
+\renewcommand{\tocName}{Gliederung}
+\renewcommand{\uniName}{Universit{\"a}t Hamburg}
+\renewcommand{\fakName}{Fakult{\"a}t f{\"u}r Mathematik, Informatik
+	und Naturwissenschaften}
+\renewcommand{\fakShortName}{MIN-Fakult{\"a}t}
+\renewcommand{\infName}{Fachbereich Informatik}
+\renewcommand{\tamsName}{Maschinelles Lernen in der Bioinformatik}
+\renewcommand{\cmlName}{Crossmodales Lernen}
+\renewcommand{\cmlSubName}{Adaptivität, Prädiktion und Interaktion}
+\renewcommand{\cmlFundName}{Projektträger}}
+%
+\AtBeginDocument{%
+\makeatletter%
+\if@doGerman%				-- language selection	--------------
+\selectlanguage{ngerman}%
+\else
+\selectlanguage{english}%
+\fi
+\makeatother}
+%
+\newlength{\wbox}
+%
+%-- tams	--------------------------------------------------------------
+\newif\if@doTAMS
+\@doTAMSfalse
+\DeclareOption{tams}{%
+\typeout{-local option: tams-}%
+\logo{\includegraphics[height=60mm]{UHH-waterMark}}
+\settowidth{\wbox}{\tiny\fakName}%
+\institute[\uniName{} -- \fakShortName]{%
+	\includegraphics[height=10mm]{Combined-logo}%
+	\hspace{2ex}\begin{minipage}[b][10mm]{\wbox}
+		\tiny%
+		\uniName{}\\%
+		\fakName\\%
+		\infName\vfill%
+		\textbf{\tamsName}
+	\end{minipage}
+}
+\@doTAMStrue}
+%
+%-- cml		--------------------------------------------------------------
+\newif\if@doCML
+\@doCMLfalse
+\DeclareOption{cml}{%
+\typeout{-local option: cml-}%
+\logo{\includegraphics[height=60mm]{CML-waterMark}}
+\settowidth{\wbox}{\footnotesize\cmlSubName}%
+\institute[\trrName{} -- \cmlShortName]{%
+	\includegraphics[height=12mm]{CML-icon}%
+	\hspace{2ex}\begin{minipage}[b][12mm]{\wbox}
+		\footnotesize%
+		\textbf{\trrName}\vfill%
+		\cmlName\\%
+		\cmlSubName
+	\end{minipage}
+}
+\@doCMLtrue}
+%
+%-- cmlFund	--------------------------------------------------------------
+\newif\if@doCMLfund
+\@doCMLfundfalse
+\DeclareOption{cmlFund}{%
+\typeout{-local option: cmlFund-}%
+\@doCMLfundtrue}
+%
+%-- uhhSans	--------------------------------------------------------------
+\DeclareOption{uhhSans}{%
+\typeout{-local option: uhhSans-}%
+\renewcommand{\sfdefault}{fts}}
+%
+%-- secHead	--------------------------------------------------------------
+\newif\if@doSecHead
+\@doSecHeadfalse
+\DeclareOption{secHead}{%
+\typeout{-local option: secHead-}%
+\@doSecHeadtrue}
+%-- subsecHead	--------------------------------------------------------------
+\newif\if@doSubSecHead
+\@doSubSecHeadfalse
+\DeclareOption{subSecHead}{%
+\typeout{-local option: subSecHead-}%
+\@doSubSecHeadtrue}
+%
+%-- secToc	--------------------------------------------------------------
+\DeclareOption{secToc}{%
+\typeout{-local option: secToc-}%
+\AtBeginSection[]{%
+	\begin{frame}[allowframebreaks]
+		\frametitle{\tocName}
+		\tableofcontents[sectionstyle=show/shaded,%
+		subsectionstyle=show/show/hide,subsubsectionstyle=show/show/show/hide]
+		%     \tableofcontents[currentsection]
+	\end{frame}
+}
+}
+%
+%-- secTocA	--------------------------------------------------------------
+\DeclareOption{secTocA}{%
+\typeout{-local option: secTocA-}%
+\AtBeginSection[]{%
+	\begin{frame}[allowframebreaks]
+		\frametitle{\tocName}
+		\tableofcontents[sectionstyle=show/show,%
+		subsectionstyle=show/show/hide,subsubsectionstyle=show/show/show/hide]
+	\end{frame}
+}
+}
+%
+%-- subsecToc	--------------------------------------------------------------
+\DeclareOption{subsecToc}{%
+\typeout{-local option: subsecToc-}%
+\AtBeginSubsection[]{%
+	\begin{frame}[allowframebreaks]
+		\frametitle{\tocName}
+		\tableofcontents[sectionstyle=show/shaded,%
+		subsectionstyle=show/shaded,subsubsectionstyle=show/shaded]
+		%     \tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+}
+%
+%-- secNum	--------------------------------------------------------------
+\newif\if@doSecNum
+\@doSecNumfalse
+\DeclareOption{secNum}{%
+\typeout{-local option: secNum-}%
+\@doSecNumtrue}
+%
+%-- noTocNum	--------------------------------------------------------------
+\newif\if@doTocNum
+\@doTocNumtrue
+\DeclareOption{noTocNum}{%
+\typeout{-local option: noTocNum-}%
+\@doTocNumfalse}
+%
+%-- fullstep	--------------------------------------------------------------
+\DeclareOption{fullstep}{%
+\typeout{-local option: fullstep-}%
+\beamerdefaultoverlayspecification{<+->}}
+%
+%-- noFoot	--------------------------------------------------------------
+\newif\if@doFoot
+\@doFoottrue
+\DeclareOption{noFoot}{%
+\typeout{-local option: noFoot-}%
+\@doFootfalse}
+%
+%-- noFootAuth	--------------------------------------------------------------
+\newif\if@doFootAuth
+\@doFootAuthtrue
+\DeclareOption{noFootAuth}{%
+\typeout{-local option: noFootAuth-}%
+\@doFootAuthfalse}
+%
+%-- noFootTitle	--------------------------------------------------------------
+\newif\if@doFootTitle
+\@doFootTitletrue
+\DeclareOption{noFootTitle}{%
+\typeout{-local option: noFootTitle-}%
+\@doFootTitlefalse}
+%
+%-- noFootPage	--------------------------------------------------------------
+\newif\if@doFootPage
+\@doFootPagetrue
+\DeclareOption{noFootPage}{%
+\typeout{-local option: noFootPage-}%
+\@doFootPagefalse}
+%
+%-- noFootPages	--------------------------------------------------------------
+\newif\if@doFootPages
+\@doFootPagestrue
+\DeclareOption{noFootPages}{%
+\typeout{-local option: noFootPages-}%
+\@doFootPagesfalse}
+
+\ProcessOptions
+
+%-----------------------------------------------------------------------------
+%-- presentation mode	------------------------------------------------------
+\mode<presentation>
+{
+% colors and fonts
+%-----------------------------------------------------------------------------
+\definecolor{uhhRed}{HTML}{E2001A}		% rot
+\definecolor{uhhBlue}{HTML}{009CD1}		% blau
+\definecolor{uhhStone}{HTML}{3C515B}		% steingrau
+% \definecolor{uhhGrayDark}{HTML}{888888}	% "UHH design"
+% \definecolor{uhhGrayMid}{HTML}{B4B4B4}	%
+% \definecolor{uhhGrayLight}{HTML}{DCDCDC}	%
+\definecolor{uhhGrayDark}{HTML}{787878}	% ajm => tamsBeamer
+\definecolor{uhhGrayMid}{HTML}{DCDCDC}	%
+\definecolor{uhhGrayLight}{HTML}{F2F2F2}	%
+\definecolor{cmlBlue}{HTML}{315BA1}		% blau
+
+%-- unused		------------------------------------------------------
+%\setbeamercolor*{normal text}{fg=black,bg=uhhGrayDark!10!white}
+%\setbeamercolor*{normal text}{fg=black,bg=gray!5!white}
+%\setbeamercolor*{palette primary}{fg=uhhRed!80!black,bg=uhhGrayDark!10!white}
+%\setbeamercolor*{palette secondary}{fg=uhhRed!60!black,bg=uhhGrayDark!5!white}
+%\setbeamercolor*{palette tertiary}{fg=uhhRed!80!black}
+%\setbeamercolor*{palette quaternary}{fg=uhhRed!60!black}
+%\setbeamercolor*{palette primary}{fg=cmlBlue!80!black,bg=uhhGrayDark!10!white}
+%\setbeamercolor*{palette secondary}{fg=cmlBlue!60!black,bg=uhhGrayDark!5!white}
+%\setbeamercolor*{palette tertiary}{fg=cmlBlue!80!black}
+%\setbeamercolor*{palette quaternary}{fg=cmlBlue!60!black}
+
+% both color schemes			--------------------------------------
+% \setbeamercolor{uhhGrayBox}{fg=white,bg=uhhGrayDark}
+\setbeamercolor{uhhGrayBox}{fg=white,bg=uhhStone}
+\setbeamercolor{section in head/foot}{fg=white,bg=uhhStone}
+\setbeamercolor{subsection in head/foot}{fg=white,bg=uhhStone}
+\setbeamercolor{subsection in head/foot shaded}{fg=uhhStone,bg=uhhStone}
+\setbeamercolor{block title}{bg=uhhGrayMid}
+\setbeamercolor{block body}{bg=uhhGrayLight}
+\setbeamercolor{block body example}{bg=uhhGrayLight}
+\setbeamercolor{block body alerted}{bg=uhhGrayLight}
+\setbeamercolor{button}{fg=uhhGrayDark,bg=uhhGrayLight}
+
+\if@doCML	% cmlColors		--------------------------------------
+\setbeamercolor{frametitle}{fg=white,bg=cmlBlue}
+%	\setbeamercolor{frametitle right}{bg=cmlBlue!50!black}
+\setbeamercolor{structure}{fg=cmlBlue}
+\setbeamercolor{alerted text}{fg=cmlBlue}
+%	\setbeamercolor{example text}{fg=cmlBlue,bg=uhhGrayLight}
+\setbeamercolor{block title example}{fg=white,bg=cmlBlue}
+\setbeamercolor{block title alerted}{fg=white,bg=cmlBlue}
+%	\setbeamercolor*{titlelike}{fg=white,bg=cmlBlue}
+\setbeamercolor*{titlelike}{fg=cmlBlue}
+%	\setbeamercolor*{separation line}{fg=cmlBlue}
+%	\setbeamercolor*{fine separation line}{}
+\else		% uhhColors [default]	--------------------------------------
+\setbeamercolor{frametitle}{fg=uhhRed,bg=uhhGrayLight}
+%	\setbeamercolor{frametitle right}{bg=uhhRed!50!black}
+\setbeamercolor{structure}{fg=uhhRed}
+\setbeamercolor{alerted text}{fg=uhhRed}
+%	\setbeamercolor{example text}{fg=uhhRed,bg=uhhGrayLight}
+\setbeamercolor{block title example}{fg=uhhRed,bg=uhhGrayLight}
+\setbeamercolor{block title alerted}{fg=white,bg=uhhRed}
+%	\setbeamercolor*{titlelike}{fg=uhhRed,bg=uhhGrayLight}
+\setbeamercolor*{titlelike}{fg=uhhRed}
+%	\setbeamercolor*{separation line}{fg=uhhRed}
+%	\setbeamercolor*{fine separation line}{}
+\fi
+
+% blocks: rounded corners + shadows	--------------------------------------
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+% fonts				--------------------------------------
+% \setbeamerfont{headFoot}{size=\Tiny}	% 4pt / 5pt
+% \setbeamerfont{section in head/foot}{size=\Tiny}
+\setbeamerfont{headFoot}{size=\@setfontsize\Tiny{5}{6}}
+\setbeamerfont{section in head/foot}{size=\@setfontsize\Tiny{5}{6}}
+\setbeamerfont{subsection in head/foot}{size=\@setfontsize\Tiny{5}{6}}
+% frametitle / headline
+%-----------------------------------------------------------------------------
+\setbeamertemplate{frametitle}{%
+	\begin{beamercolorbox}[wd=\paperwidth,dp=1.0ex,leftskip=10mm]{frametitle}%
+		\rule{0pt}{2.5ex}%
+		\hspace*{-9mm}\makebox[9mm][l]{\raisebox{-0.5ex}{%
+				\if@doCML
+				\includegraphics[height=2.5ex]{CML-icon}%
+				\else\if@doTAMS
+				\includegraphics[height=2.5ex]{\@lefticon}%
+				\fi\fi}}%
+		\insertframetitle%
+		\hfill
+		\makebox[9mm][l]{\raisebox{-0.5ex}{%
+				\if@doCML
+				\includegraphics[height=2.5ex]{CML-icon}%
+				\else\if@doTAMS
+				\includegraphics[height=2.5ex]{\@righticon}%
+				\fi\fi}}%
+		\beamer@ifempty{\insertframesubtitle}{}{\par\small\insertframesubtitle}%
+	\end{beamercolorbox}%
+	\vspace*{-2.3mm}%
+	\if@doSecHead
+	\begin{beamercolorbox}%
+		[wd=\paperwidth,ht=1.8mm,dp=0.6mm,leftskip=10mm,rightskip=10mm]%
+		{section in head/foot}%
+		\insertsectionnavigationhorizontal{\textwidth}{\hskip-3mm}{\hskip-2.8mm}%
+	\end{beamercolorbox}%	
+	\vspace*{-4.0mm}%
+	\begin{beamercolorbox}%
+		[wd=\paperwidth,ht=1.8mm,dp=0.6mm,leftskip=10mm,rightskip=10mm]%
+		{section in head/foot}%
+		\insertsubsectionnavigationhorizontal{\textwidth}{\hskip-3mm}{\hskip-2.8mm}%
+	\end{beamercolorbox}%
+	\else
+	\begin{beamercolorbox}%
+		[wd=\paperwidth,ht=1.8mm,dp=0.6mm,leftskip=10mm,rightskip=10mm]%
+		{uhhGrayBox}%
+		\usebeamerfont{headFoot}%
+		\if@doSecNum	% section numbers	------------------------------
+		\ifthenelse{\equal{\thesection}{0}}{}{\thesection%
+			\ifthenelse{\equal{\thesubsection}{0}}{}{.\thesubsection%
+				\ifthenelse{\equal{\thesubsubsection}{0}}{}{.\thesubsubsection}} }%
+		\fi%
+		\insertsection%
+		\ifthenelse{\equal{\thesubsection}{0}}{}{ - \insertsubsection%
+			\ifthenelse{\equal{\thesubsubsection}{0}}{}{ - \insertsubsubsection}}
+		\hfill%
+		\insertshorttitle%
+	\end{beamercolorbox}%
+	
+	\fi}
+
+% footline: author - title and framenumber/tot.number
+%-----------------------------------------------------------------------------
+\if@doFoot		% footline		------------------------------
+\setbeamertemplate{footline}{%
+	\begin{beamercolorbox}%
+		[wd=\paperwidth,ht=1.8mm,dp=0.6mm,leftskip=10mm,rightskip=10.2mm]%
+		{uhhGrayBox}%
+		\usebeamerfont{headFoot}%
+		\if@doFootAuth 	% author on		------------------------------
+		\insertshortauthor\fi%
+		\if@doSecHead	% option secHead	------------------------------
+		\if@doFootTitle % + title on		------------------------------
+		{\if@doFootAuth{~~--~~}\fi}%
+		\insertshorttitle\fi
+		\else		% no secHead		------------------------------
+		\ifx\@foottitle\empty% + foottitle	------------------------------
+		\else
+		{\if@doFootAuth{~~--~~}\fi}%
+		\@foottitle\fi%
+		\fi%
+		\ \hfill%
+		\if@doFootPage	% pagenumber on		------------------------------
+		\insertframenumber%
+		\if@doFootPages % total numbers on	------------------------------
+		\,/\,\inserttotalframenumber\fi\fi%
+	\end{beamercolorbox}
+}
+\fi
+
+% bibliography
+%-----------------------------------------------------------------------------
+\setbeamertemplate{bibliography item}[text]
+% \setbeamertemplate{bibliography item}[triangle]
+% \setbeamertemplate{bibliography entry author}{}
+\setbeamertemplate{bibliography entry title}{\newline}
+\setbeamertemplate{bibliography entry location}{\newline}
+\setbeamertemplate{bibliography entry note}{\newline}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+
+% misc.
+%-----------------------------------------------------------------------------
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{frametitle continuation}[from second]
+% \setbeamertemplate{frametitle continuation}{\insertcontinuationcount}
+
+\setbeamercovered{transparent}
+
+\if@doTocNum		% sectionnumber		------------------------------
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+%   \setbeamertemplate{sections/subsections in toc}[square]
+\fi
+
+% \setbeamersize{description width=3em}
+
+\setbeamertemplate{caption}{\tiny\insertcaption}
+}
+
+% titlepage - see: .../beamer/themes/inner/beamerinnerthemedefault.sty
+%-----------------------------------------------------------------------------
+\setbeamertemplate{title page}{%
+\if@doCML
+\includegraphics[width=\textwidth]{CML-banner}%
+\else\if@doTAMS
+\includegraphics[height=6.5ex]{UHH-logo}\hfill%
+\raisebox{1.5ex}{\includegraphics[height=5ex]{uke-logo}}%
+\fi\fi%
+\vfill
+\begingroup
+\centering
+\begin{beamercolorbox}[sep=8pt,center]{title}
+	\usebeamerfont{title}\inserttitle\par%
+	\ifx\insertsubtitle\@empty%
+	\else%
+	\vskip0.25em%
+	{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}%
+		\insertsubtitle\par}%
+	\fi%     
+\end{beamercolorbox}%
+\vskip1em\par
+\begin{beamercolorbox}[sep=8pt,center]{author}
+	\usebeamerfont{author}\insertauthor
+\end{beamercolorbox}
+\begin{beamercolorbox}[sep=8pt,center]{institute}
+	\usebeamerfont{institute}\insertinstitute
+\end{beamercolorbox}
+\begin{beamercolorbox}[sep=8pt,center]{date}
+	\usebeamerfont{date}\insertdate
+\end{beamercolorbox}\vskip0.5em
+{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+\endgroup
+\vfill
+\if@doCML
+\includegraphics[height=8mm]{UHH-logo}\hfill
+\includegraphics[height=8mm]{UKE-logo}\hfill
+\includegraphics[height=8mm]{THU-logo}\hfill
+\includegraphics[height=8mm]{PKU-logo}\hfill
+\includegraphics[height=8mm]{BNU-logo-800}\hfill
+\includegraphics[height=8mm]{CAS-logo-800}%
+\if@doCMLfund
+\snewlin
+\ \hfill\raisebox{1.2pt}{\tiny\cmlFundName}%
+~~\includegraphics[height=4mm]{DFG-logo}%
+~~\includegraphics[height=6mm]{NSFC-logo}%
+\fi\fi}
+
+%-----------------------------------------------------------------------------
+%-- contact frame	------------------------------------------------------
+\newcommand{\contactframe}[1][]{%
+\frame{%
+	\beamer@ifempty{#1}{}{\frametitle{#1}}%
+	\begin{center}
+		\insertauthor\\
+		\texttt{\small\@email}
+		
+		\vspace{2\baselineskip}%
+		\insertinstitute
+	\end{center}
+	}}
+	
+	%-----------------------------------------------------------------------------
+	%-- misc. definitions	------------------------------------------------------
+	\newcommand{\capText}[1]{{\tiny #1}}
+	\newcommand{\surl}[1]{{\small\url{#1}}}
+	\newcommand{\furl}[1]{{\footnotesize\url{#1}}}
+	\newcommand{\turl}[1]{{\tiny\url{#1}}}
+	\newcommand{\sturl}[1]{\parbox[t]{75mm}{\centering\footnotesize\url{#1}}}
+	\newcommand{\urlh}[2][http]{{\uref{#1://#2}{#2}}}
+	\newcommand{\surlh}[2][http]{{\small\uref{#1://#2}{#2}}}
+	\newcommand{\furlh}[2][http]{{\footnotesize\uref{#1://#2}{#2}}}
+	\newcommand{\turlh}[2][http]{{\tiny\uref{#1://#2}{#2}}}
+	\newcommand{\dqbox}[1]{\settowidth{\wbox}{#1}\makebox[\wbox]{--\dq{}--}}
+	\newcommand{\txtbox}[3][l]{\settowidth{\wbox}{#2}\makebox[\wbox][#1]{#3}}
+	
+	\newcommand{\grad}{\ensuremath{^\circ}}
+	
+	%-- itemize		------------------------------------------------------
+	\newcommand{\iGt}{\raisebox{.3ex}{\footnotesize$>$}}
+	\newcommand{\iiGt}{\raisebox{.3ex}{\tiny$>$}}
+	\newcommand{\iOpt}{\raisebox{.3ex}{\footnotesize$\vartriangleright$}}
+	\newcommand{\iiOpt}{\raisebox{.3ex}{\tiny$\vartriangleright$}}
+	%
+	\newcommand{\ii}{\item[]}
+	\newcommand{\itemP}{\item[$+$]}
+	\newcommand{\itemM}{\item[$-$]}
+	\newcommand{\itemE}{\item[$=$]}
+	\newcommand{\itemRa}{\item[$\Rightarrow$]}
+	\newcommand{\itemra}{\item[$\rightarrow$]}
+	\newcommand{\itemGt}{\item[\iGt]}		% level i
+	\newcommand{\iitemGt}{\item[\iiGt]}		% level ii
+	\newcommand{\itemOpt}{\item[\iOpt]}		% level i
+	\newcommand{\iitemOpt}{\item[\iiOpt]}		% level ii
+	
+	%-- vertical space to next line			------------------------------
+	\newcommand{\lvskip}{\vspace*{\baselineskip}}
+	\newcommand{\svskip}{\vspace*{\smallskipamount}}
+	\newcommand{\mvskip}{\vspace*{\medskipamount}}
+	\newcommand{\bvskip}{\vspace*{\bigskipamount}}
+	
+	%-- vertical space to next line + linebreak	------------------------------
+	\newcommand{\snewlin}{\smallskip\\}
+	\newcommand{\mnewlin}{\medskip\\}
+	\newcommand{\bnewlin}{\bigskip\\}
+	
+	%-- misc commands				--------------------------------
+	% mmbox - box [1.align] <2.nr>*mm-width <3.text>
+	% spc   - space <1.nr>*char-width
+	% mdot  - multiply sign
+	% angOp - <1.slanted text> in "<"...">"
+	%-------------------------------------------------------------------------------
+	\newcommand{\mmbox}[3][l]{\makebox[#2mm][#1]{#3}}
+	\newcommand{\spc}[1]{\settowidth{\wbox}{$0$}\makebox[#1\wbox][l]{}}
+	\newcommand{\mdot}{\settowidth{\wbox}{$0$}\makebox[\wbox][c]{$\times$}}
+	\newcommand{\angOp}[1]{\settowidth{\wbox}{x#1x}\makebox[\wbox][c]%
+{$\langle$\textsl{#1}$\rangle$}}
+
+%-- graphic inclusion, overriding box sizes	------------------------------
+%
+% reducedgraphics[<include-Option>]{<graphic-File>}{<boxWidth>}{<boxHeight>}
+\newcommand{\reducedgraphics}[4][]{%
+\parbox[b][#4][t]{#3}{\includegraphics[#1]{#2}}}
+%
+% pictureobj{<obj>}{<x>,<y>}
+\newcommand{\pictureobj}[2]{%
+% \setlength{\unitlength}{1mm}%
+\begin{picture}(0,0)(0,0)%	% offset:	+ move left	+ move down
+	\put(#2){%			% direction:	+ move right	+ move top
+		\makebox(0,0)[lb]{{#1}}}%
+\end{picture}%
+}
+% picturegraphics[<include-Option>]{<graphic-File>}{<x>,<y>}
+\newcommand{\picturegraphics}[3][]{%
+\pictureobj{\includegraphics[#1]{#2}}{#3}%
+}
+% picturegraphicsmm[<include-Option>]{<graphic-File>}{<x>,<y>}{<video-File>}
+\newcommand{\picturegraphicsmm}[4][]{%
+\pictureobj{\movie[externalviewer]{\includegraphics[#1]{#2}}{#4}}{#3}%
+}
+%
+% older version of picturegraphics with slightly different meaning and
+% and ordering of the parameters, kept for backwards compatibility. 
+%
+% oldpicturegraphics{x}{y}{option}{file}
+\newcommand{\oldpicturegraphics}[4]{%
+% \setlength{\unitlength}{1mm}%
+\begin{picture}(0,0)(0,0)%	% offset:	+ move left	+ move down
+	\put(#1,#2){%		% direction:	+ move right	+ move top
+		\makebox(0,0)[lb]{\includegraphics[#3]{#4}}}%
+\end{picture}%
+}
+%
+\setlength{\unitlength}{1mm}	% already set: unitlength = 1mm
+%-----------------------------------------------------------------------------
+% uhhBeamer.sty -- end

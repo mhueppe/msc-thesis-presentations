@@ -1,0 +1,139 @@
+\frametitle{Befehle für \texttt{uhhBeamer}}
+  Stringdefinitionen
+  \begin{itemize}
+  \item \verb+\foottitle{+\angOp{text}\verb+}+\\
+	Titel in der Fußzeile, wenn die Option \alert{\texttt{secHead}}
+	nicht gesetzt ist
+  \item \verb+\email{+\angOp{name@...}\verb+}+\\
+	Definiert die Mail Adresse für Befehl \alert{\texttt{contactframe}}
+  \item \verb+\lefticon{+\angOp{icon file}\verb+}+\\
+	Alternatives Icon im Kopf, anstatt des Fachbereich"=Icons, wenn
+	die Option \alert{\texttt{cml}} nicht gesetzt ist
+  \end{itemize}
+
+\vfill
+  Frames
+  \begin{itemize}
+  \item \verb+\contactframe[+\angOp{title}\verb+]+\\
+	"`Letzte Seite"' bei Vorträgen, wiederholt \texttt{author},
+	\texttt{email} und \texttt{institution}; optionaler Frametitle
+	\angOp{title}
+  \end{itemize}
+
+\framebreak
+  Verschiedene Befehle, Boxen
+  \begin{itemize}
+  \item \verb+\capText{+\angOp{text}\verb+}+\\
+	tiny Text für Bildunterschriften, Anmerkungen etc.
+  \item \verb+\grad+ Gradzeichen
+  \item \verb+\mdot+ Multiplikationszeichen, hier $\times$
+  \item \verb+\dqbox{+\angOp{textW}\verb+}+\\
+	Textverweis auf darüberliegende Zeile (\dqbox{xxxx}),
+	zentriert in einer Box mit der Breite von \angOp{textW}
+  \item \verb+\txtbox{+\angOp{textW}\verb+}{+\angOp{text}\verb+}+\\
+	\angOp{text} wird linksbündig in eine Box mit der Breite
+	von \angOp{textW} gesetzt
+  \item \verb+\mmbox[+\angOp{align}\verb+]{+\angOp{width}\verb+}{+%
+	\angOp{text}\verb+}+\\
+	\angOp{text} wird in eine Box mit der Breite \angOp{width}\,mm
+	gesetzt, optional \angOp{align}: l,c,r
+  \item \verb+\spc{+\angOp{num}\verb+}+\\
+	erzeugt einen leeren Platz \angOp{num} Zeichen breit
+  \item \verb+\angOp{+\angOp{string}\verb+}+\\
+	ein Platzhalter für Erklärungen: \angOp{string}
+  \end{itemize}
+
+\vfill
+  Abstände und Umbrüche
+  \begin{itemize}
+  \item Abstände nach aktueller Zeile; bzw.~oberhalb wenn vor Zeile
+    \begin{tabular}[t]{@{}p{20mm}l}
+	\verb+\lvskip+	& baselineskip, eine Zeile\\
+	\verb+\svskip+	& smallskipamount\\
+	\verb+\mvskip+	& medskipamount\\
+	\verb+\bvskip+	& bigskipamount
+    \end{tabular}
+  \item Abstände nach aktueller Zeile und Zeilenumbruch
+    \begin{tabular}[t]{@{}p{20mm}l}
+	\verb+\snewlin+	& smallskipamount\\
+	\verb+\mnewlin+	& medskipamount\\
+	\verb+\bnewlin+	& bigskipamount
+    \end{tabular}
+  \end{itemize}
+\framebreak
+  Referenzen auf externe Webseiten, \texttt{url}-Erweiterungen
+  \begin{itemize}
+  \item \verb+\surl{+\angOp{url}\verb+}+\,/\,%
+	\verb+\furl{+\angOp{url}\verb+}+\,/\,%
+	\verb+\turl{+\angOp{url}\verb+}+\\
+	small/footnote/tiny URL (Typewriter Font, startet Browser);\\
+	eine vollständige URL muss angegeben werden: \verb+https://...+
+  \item \verb+\urlh[+\angOp{http}\verb+]{+\angOp{url}\verb+}+\,/\,%
+	\verb+\surlh[+\angOp{http}\verb+]{+\angOp{url}\verb+}+\\%
+	\verb+\furlh[+\angOp{http}\verb+]{+\angOp{url}\verb+}+\,/\,%
+	\verb+\turlh[+\angOp{http}\verb+]{+\angOp{url}\verb+}+\\%
+	normal/small/footnote/tiny URL, das optionale erste Argument
+	(\texttt{http} oder \texttt{https}) ist nur für den Hyperlink,\\
+	im Text erscheint lediglich \angOp{url}
+  \item \verb+\sturl{+\angOp{url}\verb+}+\\
+	lange URL, die in einer \texttt{parbox} umgebrochen wird,
+	beispielsweise für Titelseiten
+  \end{itemize}
+
+\framebreak
+  Itemize-Erweiterungen
+  \begin{itemize}
+%  \item alternative Zeichen\mnewlin
+%	{\small\begin{tabular}{@{}ll@{}}
+%	Befehl		& Zeichen\\
+%	\verb+\iGt+	& \iGt\\
+%	\verb+\iiGt+	& \iiGt\\
+%	\verb+\iOpt+	& \iOpt\\
+%	\verb+\iiOpt+	& \iiOpt
+%	\end{tabular}}
+  \item Befehle, jeweils mit Zeichen\snewlin
+	{\small\begin{tabular}{@{}lll@{}}
+	\verb+\ii+	& 	& Item ohne Zeichen\\
+	\verb+\itemP+	& $+$\\
+	\verb+\itemM+	& $-$\\
+	\verb+\itemE+	& $=$\\
+	\verb+\itemRa+	& $\Rightarrow$\\
+	\verb+\itemra+	& $\rightarrow$\\
+	\verb+\itemGt+	& \iGt	& Itemize level 1\\
+	\verb+\iitemGt+	& \iiGt	& \dqbox{Itemize level} 2\\
+	\verb+\itemOpt+	& \iOpt	& \dqbox{Itemize level} 1\\
+	\verb+\iitemOpt+	& \iiOpt& \dqbox{Itemize level} 2
+	\end{tabular}}
+  \end{itemize}
+
+\framebreak
+  Grafikdateien, Objektpositionierung
+  \begin{itemize}
+  \item \verb+\reducedgraphics[+\angOp{options}\verb+]{+\angOp{file}%
+	\verb+}{+\angOp{wd}\verb+}{+\angOp{ht}\verb+}+\\
+	\texttt{includegraphics} in (künstlich verkleinerte) Box mit den
+	Dimensionen \angOp{wd}$\times$\angOp{ht}
+  \item \verb+\picturegraphics[+\angOp{options}\verb+]{+\angOp{file}%
+	\verb+}{+\angOp{x}\verb+,+\angOp{y}\verb+}+\\
+	\texttt{includegraphics} in \texttt{picture}-Umgebung der Größe
+	0$\times$0
+	\begin{itemize}
+	\item \angOp{x} ist der horizontale Offset (nach rechts)
+	\item \angOp{y} ist der \txtbox{horizontale}{vertikale}
+		Offset (nach oben)
+	\item Offsets werden ohne Einheit $[mm]$ angegeben
+	\item \angOp{options} Optionen von \texttt{includegraphics}
+	\item \angOp{file} Dateiname
+	\end{itemize}
+  \item \verb+\picturegraphicsmm[+\angOp{options}\verb+]{+\angOp{file}%
+	\verb+}{+\angOp{x}\verb+,+\angOp{y}\verb+}{+\angOp{media}\verb+}+\\
+	\texttt{picturegraphics} mit Multimedia Start:
+	{\small\verb+\movie{+\angOp{media}\verb+}+}
+  \item \verb+\pictureobj{+\angOp{object}%
+        \verb+}{+\angOp{x}\verb+,+\angOp{y}\verb+}+\\
+	freie Positionierung von \angOp{object} auf der Seite,
+	z.B. für Text
+%  \item \verb+\oldpicturegraphics{+\angOp{x}\verb+}{+\angOp{y}%
+%	\verb+}{+\angOp{options}\verb+}{+\angOp{file}\verb+}+\\
+%	Kompatibilitätsversion zu \texttt{picturegraphics}
+  \end{itemize}

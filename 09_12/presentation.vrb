@@ -1,0 +1,33 @@
+\frametitle{Parsing}
+
+	\begin{columns}[T,onlytextwidth]
+		
+		% LEFT COLUMN: lstlisting
+		\begin{column}{0.46\textwidth}
+		\boxtext{Crystallization was carried out in sitting-drop vapor-diffusion setups with 1:1 mixtures of protein solution containing 0.7 M hepes and 1.8 M MnCl2 and reservoir solution containing 19--21\% PEG 3350 and 30\% polyethylene glycol monomethyl ether 4000 and 0.2 M Na2HPO4, pH 9.5, VAPOR DIFFUSION, SITTING DROP, temperature 298K.}
+		\end{column}
+		
+		
+		% RIGHT COLUMN: boxtext
+		\begin{column}{0.5\textwidth}
+			
+			\begin{verbatim}
+				{
+					"protein": {
+						"hepes": "700 mM",
+						"MnCl2": "1800 mM"
+					},
+					"reservoir": {
+						"PEG 3350": "20%",
+						"PEGMME 4000": "30%",
+						"Na2HPO4": "200 mM"
+					},
+					"pH": 9.5,
+					"temperature": "298 K"
+				}
+			\end{verbatim}
+		\end{column}
+		
+		
+	\end{columns}
+	

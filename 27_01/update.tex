@@ -1,0 +1,153 @@
+\section{What we discussed last time}
+\subsection{Performance on Ph Prediction task}
+\begin{frame}{Performance on Ph Prediction task with valid split}
+	\begin{columns}[T,onlytextwidth]		
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item \small protein based validation split instead of entry based
+				\item \small build bi-partition tree to avoid data leakage from files with multiple proteins 
+				\item Explained Variance: 
+				\begin{itemize}
+					\item Train: 0.96
+					\item Validation: 0.25
+				\end{itemize}
+				\item Pearson: 
+				\begin{itemize}
+					\item Train: 0.98
+					\item Validation: 0.5
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		
+		
+		\begin{column}{0.6\textwidth}			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\linewidth]{../../msc-thesis-code/data/dataExploration/plots/split_corrected_ph_performance}
+			\end{figure}
+		\end{column}		
+		
+	\end{columns}	
+\end{frame}
+
+
+\section{What I did since then}
+\begin{frame}{Data proportion study}
+	\begin{columns}[T,onlytextwidth]		
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item \small \textbf{How much data do I actually need?}
+				\item \small Does penalizing help?  
+				\item \small Does making the model smaller help? 
+			\end{itemize}
+			\end{column}
+			
+			
+			\begin{column}{0.6\textwidth}			
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{../../msc-thesis-code/data/dataExploration/plots/data.train_protein_percent_vs_explained_variance_train_val}
+				\end{figure}
+			\end{column}		
+			
+		\end{columns}	
+	\end{frame}
+
+\begin{frame}{Weight decay study}
+	\begin{columns}[T,onlytextwidth]		
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item \small How much data do I actually need?
+				\item \small Does penalizing help?
+				\item \small \textbf{Does making the model smaller/larger help? }
+			\end{itemize}
+		\end{column}
+		
+		
+		\begin{column}{0.6\textwidth}			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\linewidth]{../../msc-thesis-code/data/dataExploration/plots/training.optimizer.weight_decay_vs_explained_variance_train_val}
+			\end{figure}
+		\end{column}		
+		
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Model Size Study}
+	\begin{columns}[T,onlytextwidth]		
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item \small How much data do I actually need?
+				\item \small \textbf{ Does penalizing help?}
+				\item \small Does making the model smaller/larger help? 
+			\end{itemize}
+		\end{column}
+		
+		
+		\begin{column}{0.6\textwidth}			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\linewidth]{../../msc-thesis-code/data/dataExploration/plots/model.architecture.n_estimators_vs_explained_variance_train_val}
+			\end{figure}
+		\end{column}		
+		
+	\end{columns}	
+\end{frame}
+
+
+\begin{frame}{Positive--Unlabeled (PU) Learning}
+	
+	\begin{itemize}
+		\item \textbf{Problem setting:}
+		We observe \emph{positive} samples ($y=+1$) and \emph{unlabeled} data.
+		Negative labels ($y=-1$) are never directly observed. \citet{Bekker2020}
+		
+		\item \textbf{Goal:}
+		Learn a binary classifier $f(x)$ that separates positives from negatives
+		despite missing negative labels.
+		
+		\vspace{0.5em}
+		
+		
+		\item \textbf{PU risk (no negative labels required):}
+	$$R_{\text{PU}}(f)
+	=
+	\underbrace{
+		\pi_{+}\,\mathbb{E}_{+}[\ell(f(x),+1)]
+	}_{\text{learn what "pos" looks like}}
+	+
+	\underbrace{
+		\mathbb{E}_{U}[\ell(f(x),-1)]
+	}_{\text{discourage predicting pos everywhere}}
+	-
+	\underbrace{
+		\pi_{+}\,\mathbb{E}_{+}[\ell(f(x),-1)]
+	}_{\text{remove hidden-pos penalty}}$$
+		
+		\item \textbf{Intuition:}
+		Treat unlabeled data as negative \emph{on average}, then subtract the hidden positives.
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}{First slight sucesses}
+	\begin{columns}[T,onlytextwidth]		
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\linewidth]{../../msc-thesis-code/data/dataExploration/plots/train_0.25}
+			\end{figure}
+		\end{column}
+		
+		
+		\begin{column}{0.5\textwidth}			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\linewidth]{../../msc-thesis-code/data/dataExploration/plots/val_0.25}
+			\end{figure}
+		\end{column}		
+		
+	\end{columns}	
+\end{frame}

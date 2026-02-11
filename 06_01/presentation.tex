@@ -1,0 +1,209 @@
+\documentclass[usepdftitle=false,compress, t, aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}		% input encoding
+\usepackage{scrextend}			% labeling environment
+%\usepackage{multimedia}		% for movies, sounds, animations...
+
+%\usepackage[cml,cmlFund,secHead]{uhhBeamer}
+
+\usepackage[tams,secHead]{uhhBeamer}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{forest}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[
+backend=biber,
+style=authoryear,
+citestyle=authoryear,
+natbib=true
+]{biblatex}
+\addbibresource{sources.bib}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+\definecolor{uhhred}{RGB}{144, 74, 77}
+\definecolor{uhhred_highlight}{RGB}{226, 0, 26}
+\definecolor{ukeblue}{RGB}{105, 146, 187}
+\definecolor{ukeblue_highlight}{RGB}{0, 73, 146}
+\definecolor{neutralyellow}{RGB}{244, 199, 120}
+
+\usepackage[most]{tcolorbox}
+\tcbset{on line, 
+	boxsep=4pt, left=0pt,right=0pt,top=0pt,bottom=0pt,
+	colframe=white,
+	highlight math style={enhanced}
+}
+\usetikzlibrary{shadows,arrows.meta}
+
+\tikzset{parent/.style={align=center,text width=2cm,fill=green!20,rounded corners=2pt},
+	child/.style={align=center,text width=2.8cm,fill=green!50,rounded corners=6pt},
+	grandchild/.style={fill=pink!50,text width=2.3cm}
+}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{jsonkey}{RGB}{0,0,180}
+\definecolor{jsonstring}{RGB}{0,128,0}
+
+\lstdefinelanguage{json}{
+	basicstyle=\ttfamily,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	literate=
+	*{0}{{{\color{black}0}}}{1}
+	{1}{{{\color{black}1}}}{1}
+	{2}{{{\color{black}2}}}{1}
+	{3}{{{\color{black}3}}}{1}
+	{4}{{{\color{black}4}}}{1}
+	{5}{{{\color{black}5}}}{1}
+	{6}{{{\color{black}6}}}{1}
+	{7}{{{\color{black}7}}}{1}
+	{8}{{{\color{black}8}}}{1}
+	{9}{{{\color{black}9}}}{1}
+	{:}{{{\color{black}{:}}}}{1}
+	{,}{{{\color{black}{,}}}}{1}
+	{"}{{{\color{black}{"}}}}{1},
+	morestring=[b]",
+	morecomment=[l]{//},
+}
+
+\lstset{
+	language=json,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{jsonkey},
+	stringstyle=\color{jsonstring},
+}
+
+\newcommand{\boxtext}[1]{%
+	\begin{tcolorbox}[
+		colback=uhhred!5!white,
+		colframe=ukeblue!75!black
+		]
+		#1
+	\end{tcolorbox}%
+}
+
+\newcommand{\before}[1]{%
+	\textbf{\textcolor{uhhred_highlight}{#1}}
+}
+\newcommand{\after}[1]{%
+	\textbf{\textcolor{ukeblue_highlight}{#1}}
+}
+%\usepackage[tams]{uhhBeamer}
+%-----------------------------------------------------------------------------
+%-- options		------------------------------------------------------
+%			german		- german language	[english]
+%			tams |		- TAMS 	header logo / colors
+%			cml		- CML 	banner + logos  -"-
+%			cmlFund		- "funded by" in CML titlepage
+%			uhhSans		- "The SansUHH" as sans serif font
+%			secHead		- use sectionnavigation as head
+%			secToc	|	- toc repetition at each section
+%			secTocA	|	- -"-, all sections: show
+%					  replacement for toc in short docs
+%			subsecToc	- toc repetition at each subsection
+%			secNum  	- (sub)-section numbering
+%			noTocNum  	- toc numbering	off
+%			fullstep	- always step through items
+%			noFoot		- footline		off
+%			noFootAuth	- footline author	off
+%			noFootTitle	- footline title	off
+%			noFootPage	- page numbers		off
+%			noFootPages	- + of total numbers	off
+
+% document definitions			--------------------------------------
+% ----------------------------------------------------------------------------
+\title[Predicting Protein Crystallization Conditions]			% title		-- option: short
+  {Predicting Protein Crystallization Conditions}
+\subtitle[Subtitle]			% subtitle	-- option: short
+  {Data Acquisition, Preprocessing, Exploratory Data Analysis}
+
+\author[Michael Hüppe]{Michael Hüppe}
+
+\date			% event/date	-- option: short
+  {\today}
+\usepackage[default]{cantarell}
+\usepackage[T1]{fontenc}
+\colorlet{linecol}{black!75}
+
+
+\forestset{
+	dir switch tree 2/.style={
+		for tree={
+			if level=1{
+				edge path={
+					\noexpand\path [\forestoption{edge}] (!u.parent anchor) -- ++(0,-1.5em) -| (.child anchor)\forestoption{edge label};
+				},
+				for descendants={
+					child anchor=west,
+					align=left,
+					edge path={
+						\noexpand\path [\forestoption{edge}] (!u.parent anchor) -- ++(-.5em,0) |- (.child anchor)\forestoption{edge label};
+					},
+					before computing xy={
+						l=.5em
+					}
+				},
+				before computing xy={
+					l=3em
+				},
+				for tree={
+					parent anchor=west,
+					anchor=mid west,
+					grow'=0,
+					font=\sffamily,
+					if n children=0{}{
+						delay={
+							prepend={[,phantom, calign with current]}
+						}
+					},
+				},
+			}{},
+		},
+	},
+}
+\tikzset{ 
+	colour me/.style={
+		draw=colour#1,
+		fill=colour#1!20!white,
+		text=colour#1!25!black,
+	}
+}
+% document starts here			--------------------------------------
+% ----------------------------------------------------------------------------
+\begin{document}
+\colorlet{colour0}{blue}
+\colorlet{colour1}{green}
+\colorlet{colour2}{red}
+\colorlet{colour3}{orange}
+\colorlet{colour4}{yellow}
+\colorlet{colour5}{magenta}
+
+% titlepage				--------------------------------------
+%\frame[plain]{\titlepage}		% suppress head- and footlines
+\frame{\titlepage}
+
+% toc					--------------------------------------
+%\begin{frame}[shrink=10]
+%  \frametitle{Outline}
+%  \tableofcontents
+%\end{frame}
+
+\input{update}
+%\input{dataAcquisition}
+%\input{dataAnalysis}
+%\input{combinatory}
+%\input{crims}
+%\input{conclusion}
+%\input{references}
+%\input{appendix}
+
+
+\begin{frame}{Sources}
+	\printbibliography
+\end{frame}
+\end{document}

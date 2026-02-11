@@ -1,0 +1,600 @@
+\section{Data Analysis}
+
+\subsection{Data Description}
+\begin{frame}{Data Description}
+	\begin{figure}
+	\centering
+	\begin{minipage}{.49\textwidth}
+		Number of entries: 196743 \\
+		Number of features: 612 \\
+		
+		Features related to \tcbox[colback=uhhred!60]{input}: 2 \\
+		Features related to \tcbox[colback=ukeblue!60]{label}: 18 \\
+		\begin{center}
+		\textbf{BUT!}
+		\end{center}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\scriptsize
+		\begin{forest}
+			% global defaults
+			for tree={
+				font=\scriptsize,
+				grow'=0,
+				child anchor=west,
+				parent anchor=east,
+				anchor=west,
+				align=left,
+				l sep=15pt,
+				s sep=6pt,
+				draw,
+				rounded corners,
+				inner sep=2pt,
+				fill=neutralyellow,
+				edge={thick, -{Latex[length=2mm]}},
+			},
+			% define two subtree styles
+			input subtree/.style={
+				fill=uhhred!60,
+				for descendants={fill=uhhred!75} % children a bit lighter
+			},
+			label subtree/.style={
+				fill=ukeblue!60,
+				for descendants={fill=ukeblue!75}
+			}
+			[Entry
+			[Input, input subtree
+			[Sequence]
+			[Atom Sites]
+			]
+			[Label, label subtree
+			[Method]
+			[Temp
+			[Details]
+			]
+			[pH
+			[Range]
+			]
+			[Details]
+			[Apparatus]
+			[Atmosphere]
+			[Pressure]
+			[...]
+			]
+			]
+		\end{forest}		
+	\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Missing Label}
+	\begin{figure}
+		\centering
+		\vspace{-0.4cm}
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/missingValuesLabel}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.2\linewidth]{../msc-thesis-code/data/dataExploration/plots/otherFeaturesLabelMissing}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+\subsection{Input Analysis}
+
+\begin{frame}{Derivative Features}
+	\begin{columns}[T, totalwidth=\linewidth]
+		\hspace*{-1cm}
+		% ==== LEFT COLUMN ====
+		\begin{column}{0.5\linewidth}
+			\begin{forest}
+				for tree={
+					font=\scriptsize,
+					grow'=0,
+					child anchor=west,
+					parent anchor=east,
+					anchor=west,
+					align=left,
+					l sep=10pt,
+					s sep=6pt,
+					draw,
+					rounded corners,
+					inner sep=2pt,
+					edge={thick, -{Latex[length=2mm]}},
+					% node color by level
+					if level=0{fill=uhhred!30}{},
+					if level=1{fill=uhhred!50}{},
+					if level=2{fill=uhhred!70}{},
+					if level=3{fill=uhhred!80}{},
+					if level=4{fill=uhhred!90}{},
+				}
+				[Sequence
+				[Isoelectric Point]
+				[\textbf{Sequence Embedding}
+				[\textit{Sequence Similarity}]
+				[\textit{Homology/Evolutionary relationships}]
+				[\textit{Secondary \& Tertiary Structure}]
+				[\textit{Biochemical Properties}]
+				[\textit{Functional Motifs}]
+				]
+				[Molecular Weight]
+				[Aromaticity]
+				[Sequence Length]
+				[Hydrophilicity Index]
+				]
+			\end{forest}
+		\end{column}
+
+		% ==== RIGHT COLUMN ====
+		\begin{column}{0.5\linewidth}
+			\hspace*{-1.1cm}
+			\begin{forest}
+				for tree={
+					font=\scriptsize,
+					grow'=0,
+					child anchor=west,
+					parent anchor=east,
+					anchor=west,
+					align=left,
+					l sep=10pt,
+					s sep=6pt,
+					draw,
+					rounded corners,
+					inner sep=2pt,
+					edge={thick, -{Latex[length=2mm]}},
+					if level=0{fill=ukeblue!20}{},
+					if level=1{fill=ukeblue!50}{},
+					if level=2{fill=ukeblue!80}{},
+					if level=3{fill=ukeblue!100}{},
+					if level=4{fill=ukeblue!110}{},
+				}
+				[Atom Sites
+				[\textbf{Surface}
+				[Sidechain Fraction]
+				[Hydro–Polar Contrast]
+				[Hydrophobic Surface Fraction]
+				[Surface Entropy Fraction]
+				[Net Charge Normalized]
+				[SASA Skewness]
+				[Roughness]
+				[\textbf{Surface Embedding} [\textit{Surface Similarity}] [\textit{Electrostatics}] [\textit{Interaction Sites}]]
+				]
+				[Number of Atoms
+				[Apolar]
+				[Polar]
+				]
+				]
+			\end{forest}
+		\end{column}
+		
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{Embeddings}
+	\begin{columns}[T, totalwidth=\linewidth]
+		% Left column (figure)
+		\begin{column}{0.75\linewidth}
+			\textbf{Sequence Embedding} \\
+			\begin{itemize}
+				\item ESM based from \cite{Rives2021}
+				\item trained on 250m protein sequences 
+				\item deep Transformer learned using masked language modeling objective 
+				\item biochemical properties of amino acids to remote homology of proteins 
+				
+			\end{itemize}
+			\textbf{Surface Embedding}
+			\begin{itemize}
+				\item trained on 200k protein structures
+				\item surface sampled using dMaSif \parencite{Sverrisson2020}
+				\item Auto-Encoder approach to create surface embedding
+			\end{itemize}
+		\end{column}
+		
+		% Right column (text)
+		\begin{column}{0.25\linewidth}		
+			\centering
+			\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/surfaceOriginalVsReconstruction_5}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Embeddings}
+	\begin{columns}[T, totalwidth=\linewidth]
+		% Left column (figure)
+		\begin{column}{0.75\linewidth}
+			\textbf{Sequence Embedding} \\
+			\begin{itemize}
+				\item ESM based from \cite{Rives2021}
+				\item trained on 250m protein sequences 
+				\item deep Transformer learned using masked language modeling objective 
+				\item biochemical properties of amino acids to remote homology of proteins 
+				
+			\end{itemize}
+			\textbf{Surface Embedding}
+			\begin{itemize}
+				\item trained on 200k protein structures
+				\item surface sampled using dMaSif \parencite{Sverrisson2020}
+				\item Auto-Encoder approach to create surface embedding
+			\end{itemize}
+		\end{column}
+		
+		% Right column (text)
+		\begin{column}{0.25\linewidth}		
+			\centering
+			\includegraphics[width=0.9\linewidth]{../msc-thesis-code/data/dataExploration/plots/surfaceOriginalVsReconstruction_6}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{Embeddings}
+	\begin{columns}[T, totalwidth=\linewidth]
+		% Left column (figure)
+		\begin{column}{0.75\linewidth}
+			\textbf{Sequence Embedding} \\
+			\begin{itemize}
+				\item ESM based from \cite{Rives2021}
+				\item trained on 250m protein sequences 
+				\item deep Transformer learned using masked language modeling objective 
+				\item biochemical properties of amino acids to remote homology of proteins 
+				
+			\end{itemize}
+			\textbf{Surface Embedding}
+			\begin{itemize}
+				\item trained on 200k protein structures
+				\item surface sampled using dMaSif \parencite{Sverrisson2020}
+				\item Auto-Encoder approach to create surface embedding
+			\end{itemize}
+		\end{column}
+		
+		% Right column (text)
+		\begin{column}{0.25\linewidth}		
+			\centering
+			\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/surfaceOriginalVsReconstruction_7}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Sequence Length Distribution (also see: \ref{Appendix:atom_counts})}
+	\begin{columns}[T, totalwidth=\linewidth]
+		% Left column (figure)
+		\begin{column}{0.5\linewidth}
+			\centering
+			\includegraphics[width=0.85\linewidth]{../msc-thesis-code/data/dataExploration/plots/sequenceLength}
+		\end{column}
+		
+		% Right column (text)
+		\begin{column}{0.5\linewidth}
+			\textbf{Sequence Length Distribution}
+			\vspace{0.5em}
+			\begin{itemize}
+				\item Input size has to be chosen such that the majority of the protein space is included in the dataset
+				\item Outliers might unnecessarily increase model size or are too small to encode information (92\% for $[60, 1000]$)
+			\end{itemize}
+			
+			\centering
+				\begin{tabular}{lr}
+					\toprule
+					& Sequence Length \\
+					\midrule
+					count & 280543 \\
+					mean & 262 \\
+					std & 191 \\
+					min & 2 \\
+					max & 4128 \\
+					\bottomrule
+				\end{tabular}						
+			
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Amino Acid Distribution (also see: \ref{Appendix:codons})}
+	\begin{figure}
+		\centering
+		\begin{minipage}{.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/aminoAcidOccurence}
+				\label{fig:aminoAcidOccurence}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{.6\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.1\linewidth]{../msc-thesis-code/data/dataExploration/plots/observedVsPredictedAminoAcidCount}
+				\label{fig:observedvspredictedaminoacidcount}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+
+\subsection{Label Analysis}
+\begin{frame}{Label Features}
+	\centering
+	\vspace{1cm}
+	\begin{forest}
+		% global defaults
+		for tree={
+			font=\scriptsize,
+			grow'=-90,
+			child anchor=north,
+			parent anchor=south,
+			anchor=north,
+			align=center,
+			l sep=15pt,
+			s sep=6pt,
+			draw,
+			rounded corners,
+			inner sep=2pt,
+			fill=neutralyellow,
+			edge={thick, -{Latex[length=2mm]}},
+		},
+		highlight/.style={fill=uhhred!60},
+		% define two subtree styles
+		input subtree/.style={
+			fill=uhhred!60,
+			for descendants={fill=uhhred!75} % children a bit lighter
+		},
+		label subtree/.style={
+			fill=ukeblue!60,
+			for descendants={fill=ukeblue!75}
+		}
+		[Label, label subtree
+		[Method, highlight [Ref]]
+		[Temp, highlight
+		[Details]
+		]
+		[pH, highlight
+		[Range]
+		]
+		[Details, highlight,
+		for descendants={fill=uhhred!75} [Reservoir [Precipitant [Concentration]] [Buffer [Concentration]] [Additive [Concentration]]] [Cryo Stabilizer [...]] [Protein Growth Solution[...]]]
+		[Apparatus]
+		[Atmosphere]
+		[Pressure]
+		[...]
+		]
+	\end{forest}
+\end{frame}
+
+\begin{frame}{Method of Crystallization}
+	\hspace{-0.45cm}
+	\vspace{-0.9cm}
+	\begin{figure}
+		\centering
+		\begin{minipage}{.65\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/employmentMethodDistribution}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.1\linewidth]{../msc-thesis-code/data/dataExploration/plots/employmentMethodDistribution_grouped_pie}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Temperature and pH}
+	\begin{figure}
+		\centering
+		\hspace{-1.2cm}
+		\vspace{0.9cm}
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.15\linewidth]{../msc-thesis-code/data/dataExploration/plots/temperatureDistribution}
+			\end{figure}
+		\end{minipage}%
+		\hspace{0.5cm}
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.15\linewidth]{../msc-thesis-code/data/dataExploration/plots/phDistribution}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Label Parsing (Uniform Words)}
+	Based on preprocessing proposed by \cite{Lynch2020}
+	\boxtext{Crystallization was carried out in sitting-drop vapor-diffusion setups with 1:1 mixtures of protein solution containing 0.7 mM hepes and 1.8 mM MnCl2 and reservoir solution containing 19\%-21\% PEG 3350 and 30 \before{percent} \before{polyethylene glycol monomethyl ether} 4000 and 0.2 M Na2HPO4 , pH 9.5, VAPOR DIFFUSION, SITTING DROP, temperature 298K}
+\centering
+$
+\Big\downarrow
+$
+	\boxtext{Crystallization was carried out in sitting-drop vapor-diffusion setups with 1:1 mixtures of protein solution containing 0.7 mM hepes and 1.8 mM MnCl2 and reservoir solution containing 19\%-21\% PEG 3350 and 30\after{\%} \after{PEGMME} 4000 and 0.2 M Na2HPO4 , pH 9.5, VAPOR DIFFUSION, SITTING DROP, temperature 298K}
+\end{frame}
+
+\begin{frame}{Label Parsing (Split Sections)}
+	\boxtext{Crystallization was carried out in sitting-drop vapor-diffusion setups with 1:1 mixtures of \before{protein solution} containing 0.7 mM heeppeess and 1.8 mM MnCl2 and \before{reservoir solution} 19\%-21\% PEG 3350 and 30\% PEGMME 4000 and 0.2 M Na2HPO4 , \before{pH 9.5, VAPOR DIFFUSION, SITTING DROP, temperature 298K}}
+	\centering
+	$
+	\Big\downarrow
+	$
+	\boxtext{
+		\after{protein solution}: containing 0.7 mM hepes and 1.8 mM MnCl2 and \\ 
+		\after{reservoir solution}: containing 19\%-21\% PEG 3350 and 30\% PEGMME 4000 and 0.2 M Na2HPO4 \\
+		 \after{pH 9.5}, \\ 
+		 \after{VAPOR DIFFUSION, SITTING DROP}, \\ 
+		 \after{temperature 298K}}
+\end{frame}
+
+\begin{frame}{Label Parsing (Average Ranges)}
+	\boxtext{
+	protein solution: containing 0.7 mM hepes and 1.8 mM MnCl2 and \\ 
+	reservoir solution: containing \before{19\%-21\%} PEG 3350 and 30\% PEGMME 4000 and 0.2 M Na2HPO4 , \\
+	pH 9.5, \\
+	VAPOR DIFFUSION, SITTING DROP, \\
+	temperature 298K}
+	\centering
+	$
+	\Big\downarrow
+	$
+	\boxtext{
+		protein solution: containing 0.7 mM hepes and 1.8 mM MnCl2 and \\ 
+		reservoir solution: containing \after{20\%} PEG 3350 and 30\% PEGMME 4000 and 0.2 M Na2HPO4 , \\
+		pH 9.5, \\
+		VAPOR DIFFUSION, SITTING DROP, \\
+		temperature 298K}
+\end{frame}
+
+
+\begin{frame}{Label Parsing (Normalize Units)}
+\boxtext{
+	protein solution: containing 0.7 mM hepes and 1.8 mM MnCl2 and \\ 
+	reservoir solution: containing 20\% PEG 3350 and 30\% PEGMME 4000 and \before{0.2 M} Na2HPO4 , \\
+	pH 9.5,\\ VAPOR DIFFUSION, \\
+	SITTING DROP, temperature 298K}\\
+	
+	\centering
+	$
+	\Big\downarrow
+	$
+	\boxtext{
+		protein solution: containing 0.7 mM hepes and 1.8 mM MnCl2 and \\ 
+		reservoir solution: containing 20\% PEG 3350 and 30\% PEGMME 4000 and \after{200 mM} Na2HPO4 , \\
+		pH 9.5, \\
+		VAPOR DIFFUSION, SITTING DROP, \\
+		temperature 298K}
+\end{frame}
+
+
+\begin{frame}{Label Parsing (Remove unnecessary words)}
+	\boxtext{
+		protein \before{solution}: \before{containing} 0.7 mM hepes \before{and} 1.8 mM MnCl2 \before{and} \\ 
+		reservoir \before{solution}: \before{containing} 20\% PEG 3350 \before{and} 30\% PEGMME 4000 \before{and} 0.2 M Na2HPO4 , \\
+		pH 9.5, \\
+		VAPOR DIFFUSION, SITTING DROP, \\
+		temperature 298K}
+	\centering
+	$
+	\Big\downarrow
+	$
+	\boxtext{
+		protein: 0.7 mM hepes 1.8 mM MnCl2 \\ 
+		reservoir: 20\% PEG 3350 30\% PEGMME 4000 200 mM Na2HPO4 , \\
+		pH 9.5, \\
+		VAPOR DIFFUSION, SITTING DROP, \\
+		temperature 298K}
+\end{frame}
+
+\begin{frame}[fragile]{Label Parsing (Format)}
+	\vspace{-0.3cm}
+	\begin{lstlisting}
+	{
+	"protein": {
+		"hepes": 0.7mM, 
+		"MnCl2": 1.8mM, 							
+		},
+	"reservoir": {
+		"PEG 3350": 20\%, 
+		"PEGMME 4000": 30\%, 
+		"Na2HPO4": 200mM,							
+		},
+	"pH": 9.5, 
+	"method": Vapor Diffusion, Sitting Drop
+	"temperature": 298k 
+	}
+	\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{Compound Distribution}
+	\begin{figure}
+		\centering
+		\hspace{-1.2cm}
+		\vspace{0.9cm}
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.15\linewidth]{../msc-thesis-code/data/dataExploration/plots/distribution_solution_type}
+			\end{figure}
+		\end{minipage}%
+		\hspace{0.5cm}
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{../msc-thesis-code/data/dataExploration/plots/nCompoundsDistribution}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Chemical Names}
+	\begin{figure}
+		\centering
+		\hspace{-1.2cm}
+		\vspace{0.9cm}
+		\begin{minipage}{.5\textwidth}
+			\begin{itemize}
+				\item Number of unique chemicals: 24999
+				\item After frequency filtering at 100: 348
+			\end{itemize}
+			\vspace{-1cm}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.2\linewidth]{../msc-thesis-code/data/dataExploration/plots/coverageByThreshold}
+			\end{figure}
+		\end{minipage}%
+		\hspace{0.5cm}
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{../msc-thesis-code/data/dataExploration/plots/occurencesDistribution}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Compound Distribution}
+	\begin{figure}
+		\centering
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}[h!]
+				\centering
+				\begin{subfigure}[b]{0.48\textwidth}
+					\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/mostCommonPEGs}
+				\end{subfigure}
+				\hfill
+				\begin{subfigure}[b]{0.48\textwidth}
+					\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/mostCommonChemical}
+				\end{subfigure}
+			\end{figure}
+			
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.76\linewidth]{../msc-thesis-code/data/dataExploration/plots/commonChemCombinations}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Chemical Cocktails}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{../msc-thesis-code/data/dataExploration/plots/mostCommonPartners}
+	\end{figure}
+\end{frame}
+
+
+
+
+

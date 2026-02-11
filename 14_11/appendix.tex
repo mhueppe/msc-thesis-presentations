@@ -1,0 +1,144 @@
+\section{Appendix}
+
+
+\begin{frame}{Atom Count Distribution}
+	\begin{figure}
+		\centering
+		\begin{minipage}{.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/atom_count}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{.6\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.1\linewidth]{../msc-thesis-code/data/dataExploration/plots/total_area_dist}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
+	\label{Appendix:atom_counts}
+\end{frame}
+
+
+\begin{frame}[shrink=45]{Codons for Aminoacids}
+	\begin{columns}[T, totalwidth=\linewidth]
+		% Left column (figure)
+		\begin{column}{0.5\linewidth}
+			\begin{tabular}{ll}
+				Residue & Codons \\
+				\midrule
+				Alanine & GCU, GCC, GCA, GCG \\
+				Arginine & CGU, CGC, CGA, CGG, AGA, AGG \\
+				Asparagine & AAU, AAC \\
+				Aspartic acid & GAU, GAC \\
+				Cysteine & UGU, UGC \\
+				Glutamine & CAA, CAG \\
+				Glutamic acid & GAA, GAG \\
+				Glycine & GGU, GGC, GGA, GGG \\
+				Histidine & CAU, CAC \\
+				Isoleucine & AUU, AUC, AUA \\
+				Leucine & UUA, UUG, CUU, CUC, CUA, CUG \\
+				Lysine & AAA, AAG \\
+				Methionine & AUG \\
+				Phenylalanine & UUU, UUC \\
+				Proline & CCU, CCC, CCA, CCG \\
+				Serine & UCU, UCC, UCA, UCG, AGU, AGC \\
+				Threonine & ACU, ACC, ACA, ACG \\
+				Tryptophan & UGG \\
+				Tyrosine & UAU, UAC \\
+				Valine & GUU, GUC, GUA, GUG \\
+				Stop & UAA, UAG, UGA \\
+				Pyrrolysine & UAG \\
+				Selenocysteine & UGA \\
+				Q or E & CAA, CAG, GAA, GAG \\
+				N or D & AAU, AAC, GAU, GAC \\
+				\bottomrule
+			\end{tabular}
+		\end{column}
+		
+		% Right column (text)
+		\begin{column}{0.45\linewidth}		
+			\begin{tabular}{lr}
+				\toprule
+				base & frequency \\
+				\midrule
+				G & 0.252252 \\
+				C & 0.234234 \\
+				U & 0.234234 \\
+				A & 0.279279 \\
+				\bottomrule
+			\end{tabular}				
+			
+		\end{column}
+	\end{columns}
+	\label{Appendix:codons}
+\end{frame}
+
+
+\begin{frame}{Crystal Features vs. Compounds}\label{Appendix:crystalFeaturesVsCompounds}
+	\begin{figure}[h!]
+		\centering
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/density_percent_solVsPeg}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/density_percent_solVsChem}
+		\end{subfigure}
+		\caption{Correlation of Solvent Content and Compounds.}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Crystal Features vs. Compounds}\label{Appendix:crystalFeaturesVsCompounds2}
+	\begin{figure}[h!]
+		\centering
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/KS_Distance_PEG}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/KS_Distance_Chemicals}
+		\end{subfigure}
+		\caption{KS Distance between Compounds}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Cell Features vs. Compounds}\label{Appendix:cellFeaturesVsCompounds}
+	\begin{figure}[htbp]
+		\centering
+		% Row 1
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/length_aVsPeg}
+		\end{subfigure}\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/length_bVsPeg}
+		\end{subfigure}\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/length_cVsPeg}
+		\end{subfigure}
+		
+		\vspace{0.1em}
+		
+		% Row 2
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/length_aVsChem}
+		\end{subfigure}\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/length_bVsChem}
+		\end{subfigure}\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/length_cVsChem}
+		\end{subfigure}
+		\label{fig:cellParameter}
+	\end{figure}
+	
+\end{frame}

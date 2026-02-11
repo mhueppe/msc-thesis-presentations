@@ -1,0 +1,18 @@
+\frametitle{Label Parsing (Format)}
+\vspace{-0.3cm}
+	\begin{lstlisting}
+	{
+	"protein": {
+		"hepes": 0.7mM,
+		"MnCl2": 1.8mM, 							
+		},
+	"reservoir": {
+		"PEG 3350": 20\%,
+		"PEGMME 4000": 30\%,
+		"Na2HPO4": 200mM,							
+		},
+	"pH": 9.5,
+	"method": Vapor Diffusion, Sitting Drop
+	"temperature": 298k
+	}
+	\end{lstlisting}

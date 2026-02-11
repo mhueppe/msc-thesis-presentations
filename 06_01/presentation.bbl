@@ -1,0 +1,102 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{Lee2019}{inproceedings}{}{}
+      \name{author}{8}{}{%
+        {{un=0,uniquepart=base,hash=93d672e970cfc09c4d85b7224fedb176}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Hyunim},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4699025bd98e932e7e2e36793d89d260}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Zhen\bibnamedelima Hao},
+           giveni={Z\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=08834eb7005985a5bba1a4f4a406f2cb}{%
+           family={Corbi-Verge},
+           familyi={C\bibinithyphendelim V\bibinitperiod},
+           given={Carles},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ef0cb7bfba2a1cb09dae401edd363ac3}{%
+           family={Mok},
+           familyi={M\bibinitperiod},
+           given={Mac},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=927370e501c8a3ff355f0a188fd7859e}{%
+           family={Kang},
+           familyi={K\bibinitperiod},
+           given={Sidney},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=18c204904537ec382febbb3fca499471}{%
+           family={Liao},
+           familyi={L\bibinitperiod},
+           given={Shun},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=345c57c37acad17289ea6b8a348156db}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Zhaolei},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=41edee3b089f1e326b606a5b4353f20b}{%
+           family={Garton},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0c2b22a0a46037901cbe61c1aca94537}
+      \strng{fullhash}{3d04685facaad2a5608bb859ad2d97eb}
+      \strng{fullhashraw}{3d04685facaad2a5608bb859ad2d97eb}
+      \strng{bibnamehash}{0c2b22a0a46037901cbe61c1aca94537}
+      \strng{authorbibnamehash}{0c2b22a0a46037901cbe61c1aca94537}
+      \strng{authornamehash}{0c2b22a0a46037901cbe61c1aca94537}
+      \strng{authorfullhash}{3d04685facaad2a5608bb859ad2d97eb}
+      \strng{authorfullhashraw}{3d04685facaad2a5608bb859ad2d97eb}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems}
+      \field{note}{Accessed: 2025-07-31}
+      \field{title}{De novo Crystallization Condition Prediction with Deep Learning}
+      \field{volume}{32}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://mlcb.github.io/mlcb2019_proceedings/papers/paper_3.pdf
+      \endverb
+      \verb{url}
+      \verb https://mlcb.github.io/mlcb2019_proceedings/papers/paper_3.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
