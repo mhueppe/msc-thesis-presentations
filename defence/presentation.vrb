@@ -1,0 +1,80 @@
+\frametitle{Leakage-safe train/val split}
+\centering
+	\resizebox{\textwidth}{!}{%
+		begin{tikzpicture}[
+		node distance=9mm and 14mm,
+		font=\small,
+		box/.style={draw, rounded corners, align=left, inner sep=6pt, minimum width=6.4cm},
+		smallbox/.style={draw, rounded corners, align=left, inner sep=6pt},
+		decision/.style={draw, diamond, aspect=2.2, align=center, inner sep=2pt},
+		line/.style={-Latex, thick}
+		]
+		
+		% --- Main pipeline (top-down) ---
+		\node[box] (load) {Load reference table\\
+			\texttt{ref $\leftarrow$ read\_parquet("struct\_ref")}};
+		
+		\node[box, below=of load] (topn) {Select proteins (db\_code)\\
+			\texttt{proteins $\leftarrow$ value\_counts(db\_code)}\\
+			\texttt{top\_n $\leftarrow$ proteins[:n\_proteins] (if $n\_proteins>0$)}};
+		
+		\node[box, below=of topn] (filter) {Filter rows to selected proteins\\
+			\texttt{ref $\leftarrow$ ref[db\_code $\in$ top\_n]}};
+		
+		\node[decision, below=of filter] (avoid) {avoid\_same\_proteins?};
+		
+		% --- Branch: avoid_same_proteins = false ---
+		\node[smallbox, right=20mm of avoid] (simpleSplit) {Standard split\\(not shown in code snippet)};
+		% If you don't want this placeholder, delete it and route to "done".
+		
+		% --- Branch: avoid_same_proteins = true ---
+		\node[box, below=16mm of avoid] (edges) {Keep unique bipartite edges\\
+			\texttt{edges $\leftarrow$ ref[[entry\_id, db\_code]].drop\_duplicates()}};
+		
+		\node[box, below=of edges] (nodes) {Create node namespace\\
+			\texttt{E:$\langle$entry\_id$\rangle$,\; D:$\langle$db\_code$\rangle$}\\
+			Map all nodes to indices};
+		
+		\node[box, below=of nodes] (uf) {Union-Find over bipartite graph\\
+			Initialize \texttt{parent, rank}\\
+			For each edge $(e,d)$: \texttt{union(e,d)}};
+		
+		\node[box, below=of uf] (comp) {Component id for each entry\\
+			\texttt{entry\_comp[i] $\leftarrow$ find(E:entry\_id)}};
+		
+		\node[box, below=of comp] (split) {Deterministic component split\\
+			\texttt{comps $\leftarrow$ sorted(unique(entry\_comp))}\\
+			Shuffle with \texttt{random\_state}\\
+			\texttt{n\_val $\leftarrow \lceil |comps|\cdot split\_ratio \rceil$}\\
+			\texttt{val\_comps $\leftarrow$ comps[:n\_val], train\_comps $\leftarrow$ comps[n\_val:]}};
+		
+		\node[box, below=of split] (ids) {Derive train/val entry ids\\
+			\texttt{train\_pid $\leftarrow$ unique(entry\_id in train\_comps)}\\
+			\texttt{val\_pid   $\leftarrow$ unique(entry\_id in val\_comps)}};
+		
+		\node[box, below=of ids] (check) {Sanity check: no db\_code leakage\\
+			\texttt{train\_db $\leftarrow$ unique(db\_code for train\_pid)}\\
+			\texttt{val\_db   $\leftarrow$ unique(db\_code for val\_pid)}\\
+			Assert \texttt{train\_db $\cap$ val\_db = $\emptyset$}};
+		
+		\node[smallbox, below=of check] (done) {Output: train\_pid, val\_pid};
+		
+		% --- Arrows ---
+		\draw[line] (load) -- (topn);
+		\draw[line] (topn) -- (filter);
+		\draw[line] (filter) -- (avoid);
+		
+		\draw[line] (avoid) -- node[right, xshift=1mm]{\small yes} (edges);
+		\draw[line] (edges) -- (nodes);
+		\draw[line] (nodes) -- (uf);
+		\draw[line] (uf) -- (comp);
+		\draw[line] (comp) -- (split);
+		\draw[line] (split) -- (ids);
+		\draw[line] (ids) -- (check);
+		\draw[line] (check) -- (done);
+		
+		\draw[line] (avoid.east) -- node[above]{\small no} (simpleSplit.west);
+		
+		\end{tikzpicture}
+	
+	}

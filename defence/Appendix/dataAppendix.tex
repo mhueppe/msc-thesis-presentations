@@ -1,0 +1,342 @@
+\subsection{Data}
+\begin{frame}[shrink=15]{Database Structure}
+    \centering
+\begin{forest}
+	% global defaults
+	for tree={
+		font=\scriptsize,
+		grow'=0,
+		child anchor=west,
+		parent anchor=east,
+		anchor=west,
+		align=left,
+		l sep=15pt,
+		s sep=4pt,
+		draw,
+		rounded corners,
+		inner sep=2pt,
+		if level=0{fill=uhhred!50}{},
+		if level=1{fill=ukeblue!30}{},
+		if level=2{fill=ukeblue!50}{},
+		if level=3{fill=ukeblue!80}{},
+		if level=4{fill=ukeblue!90}{},
+		edge={thick, -{Latex[length=2mm]}},
+	},
+	[\textbf{protein.cif} \\
+	\texttt{\underline{entry\_id}} \\
+	\texttt{citation  }\\
+	\texttt{software }\\
+	\texttt{cell }\\
+	\texttt{symmetry }\\
+	\texttt{entity\_src\_gen }\\
+	\texttt{exptl\_crystal}\\
+	\texttt{exptl\_crystal\_grow }\\ 
+	\texttt{atom\_sites}\\
+	\texttt{entitiy\_poly}\\
+	...
+	[citation
+	[\begin{tabular}{llllrl}
+		entry\_id& title & year & journal & volume & ... \\
+		\midrule
+		3P4V & 'Natural Product-Based ...' & 2011 & J.Med.Chem. & 54 & ... \\		
+	\end{tabular}]
+	]
+	[symmetry
+	[\begin{tabular}{llrl}
+		entry\_id & space\_group\_name\_H-M &  Int\_Tables\_number & ... \\
+		\midrule
+		3P4V & 'P 1 21 1' & 4  & ...\\
+	\end{tabular}]]
+	[exptl\_crystal
+	[\begin{tabular}{lrrl}
+		entry\_id & density\_Matthews & density\_percent\_sol & ... \\
+		\midrule
+		3P4V  & 2.09 & 41.09 & ... \\
+	\end{tabular}]
+	]
+	[entitiy\_poly [\begin{tabular}{lllll}
+		entry\_id & type & pdbx\_seq\_one\_letter\_code\_can & pdbx\_strand\_id & ... \\
+		\midrule
+		3P4V & 'polypeptide(L)' & MSHHWGYGKHNG... & A & ...\\
+	\end{tabular}]
+	]
+	[exptl\_crystal\_grow
+	[\begin{tabular}{llllll}
+		entry\_id & method & temp & pH & details & ...  \\
+		\midrule
+		3P4V & VAPOR DIFFSUSION & 289 & 9.5 & 3.2M (NH4)2SO4 ... & ... \\
+	\end{tabular}]
+	]
+	[...]
+	]
+\end{forest}		
+	\label{frame:DatabaseStructure}    
+\end{frame}
+
+\begin{frame}{Sequence Length and Atom Count Distribution}
+	\begin{figure}[h!]
+	\centering
+	
+	\begin{subfigure}[t]{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/sequenceLength}
+		\label{fig:seqLength}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/atomCount}
+		\label{fig:atomCounts}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/atomCountVsSequenceLength_new}
+		\label{fig:atomCountsVsSeqLength}
+	\end{subfigure}
+	\caption[Sequence Length and Atom count Distribution]{Visualization of the distribution of sequence lengths and deposited atom counts}
+	\label{fig:sequenceAndAtomCount}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Temperature and pH Distributions}
+	\begin{figure}[h!]
+	\centering		
+	\begin{subfigure}[b]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/temperatureDistribution}
+		\label{fig:temperatureDistrbution}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/phDistribution}
+		\label{fig:pHDistribution}
+	\end{subfigure}
+	\caption[Temperature and pH distributions]{Numerical value distributions}
+	\label{fig:temperatureAndPh}
+\end{figure}
+	\label{frame:temperatureAndPh}
+\end{frame}
+
+\begin{frame}{Data Parsing Quality for Numerical Values}
+    \begin{figure}[h!]
+	\centering		
+	\begin{subfigure}{0.489\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/phGivenVsParsedpH}
+		\label{fig:enteredVsParsedPh}
+	\end{subfigure}
+	\hspace{0.1cm}
+	\begin{subfigure}[b]{0.489\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/tempGivenVsParsedTemp}
+		\label{fig:enteredVsParsedTemp}
+	\end{subfigure}
+	\caption[Parsing Quality for numerical values]{Difference between parsed and entered pH and temperature values}
+	\label{fig:enteredVsParsed}
+    \end{figure}
+    \label{frame:enteredVsParsed}
+\end{frame}
+
+\begin{frame}{Protein bias}
+    \begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../msc-thesis-code/data/dataExploration/plots/db_code}
+	\caption[Number of unique counts per protein]{There is a strong biased towards certain proteins. Some have been crystallized multiple times.}
+	\label{fig:most_common_proteins}
+\end{figure}
+    \label{frame:most_common_proteins}
+\end{frame}
+
+\begin{frame}{Methods of Crystallization}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{../msc-thesis-code/data/dataExploration/plots/employmentMethodDistribution}
+	\caption[Most common crystallization methods]{Vapor diffusion is the most commonly used method for protein crystallization.}	
+	\label{fig:employmentMethodDistribution}
+\end{figure}
+
+    \label{frame:employmentMethodDistribution}
+\end{frame}
+
+\begin{frame}{\gls{pdb} Descriptions}
+    \begin{table}[h!]
+	\centering
+	\begin{tabularx}{\linewidth}{lX}
+		\toprule
+		\texttt{entry\_id} & \texttt{pdbx\_details}\\
+		\midrule
+		\href{https://www.rcsb.org/structure/3P4H}{3P4H} & Crystallization was carried out in sitting-drop vapor-diffusion setups with 1:1 mixtures of protein solution containing 0.7 mM Cko and 1.8 mM MnCl2 and reservoir solution containing 20\% PEG 3350 and 0.2 M Na2HPO4 , pH 9.5, VAPOR DIFFUSION, SITTING DROP, temperature 298K 
+		\\ \hline
+		\href{https://www.rcsb.org/structure/3PCA}{3PCA} & pH 8.4  \\\hline
+		\href{https://www.rcsb.org/structure/6LJR}{6LJR} & PEG \\ \hline
+		\href{https://www.rcsb.org/structure/3PF1}{3PF1} & 15-17\% PEG 4K 0.2M KCl, protein dialysed in 10mM NaOAc 50mM NaCl, 10\% glycerol 0.4\%C8E4, pH 5.5, VAPOR DIFFUSION, HANGING DROP, temperature 295K \\
+		\bottomrule
+	\end{tabularx}	
+	\caption[Crystallization condition free text examples]{Crystallization condition free text examples {\tiny (cf. \ref{frame:dataOccurences} \& \ref{frame:enteredVsParsed})}}
+	\label{tab:detailsExamples}
+\end{table}
+\label{frame:detailsExamples}
+\end{frame}
+
+\begin{frame}{Data Parsing Quality}    
+    \begin{figure}[h!]
+        \centering		
+        \begin{subfigure}[t]{0.33\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/occurencesDistribution}
+            \label{fig:numberOfOccurencesPerChemical}
+        \end{subfigure}
+        \hspace{0.1cm}
+        \begin{subfigure}[t]{0.64\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/coverageByThreshold}
+            \label{fig:coverageVsNumberOfChemicals}
+        \end{subfigure}
+        \caption[Parsing Quality estimated by unique chemical names]{Parsing Quality estimated by unique chemical names and their frequency of occurrence in the dataset}
+        \label{fig:numberAndOccurences}
+    \end{figure}
+    \label{frame:dataOccurences}
+\end{frame}
+
+\begin{frame}{Percentage of Missing Data}
+    \begin{table}[h]
+	´\centering
+	\begin{tabularx}{\linewidth}{p{8cm}r}
+		\toprule
+		Attribute & Missing percentage \\
+		\midrule
+		\textbf{pdbx\_details} & 0.04 \\
+		\textbf{method} & 10.78 \\
+		\textbf{temp} & 10.79 \\
+		\textbf{pH} & 22.30 \\
+		pdbx\_pH\_range & 75.24 \\
+		temp\_details & 98.56 \\
+		details, seeding & 99.83 \\
+		apparatus, atmosphere, method\_ref, pressure, pressure\_esd, seeding\_ref, temp\_esd, time & 99.84 \\
+		\bottomrule
+	\end{tabularx}
+	\caption[Percentage of missing data per label attribute]{The percentage of missing values for each attribute in the crystallization condition category. Only 5 attributes have sufficient data. }
+	\label{tab:missing_percentage}
+\end{table}
+\label{frame:MissingPercentageCondition}
+\end{frame}
+
+\begin{frame}{Concentration Analysis}
+    
+    \begin{figure}[h!]
+        \centering		
+        \begin{subfigure}[t]{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/most_common_pegs_with_concentration_point}
+            \label{fig:most_common_pegs_with_concentration_point}
+        \end{subfigure}
+        \hspace{0.1cm}
+        \begin{subfigure}[t]{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/most_common_chem_with_concentration_point}
+            \label{fig:most_common_chem_with_concentration_point}
+        \end{subfigure}
+        \caption[Most common compounds with concentrations]{Differing Concentration distributions for the most common \glspl{peg} and other chemicals}
+        \label{fig:mostCommonCompoundsAndConcentration}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Cocktail Analysis}
+    \begin{figure}[h!]
+	\centering		
+	\begin{subfigure}[t]{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/commonChemCombinations}
+		\label{fig:mostcommoncocktails}
+	\end{subfigure}
+	\hspace{0.1cm}
+	\begin{subfigure}[t]{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/commonChemClasses}
+		\label{fig:commonChemClasses}
+	\end{subfigure}
+	\label{fig:cocktailAnalysis}
+	\caption[Cocktail Analysis]{Most common cocktails and chemical classes}
+\end{figure}
+\label{frame:Compounds}
+\end{frame}
+
+\begin{frame}{Most common partner compounds}
+    \begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{../msc-thesis-code/data/dataExploration/plots/mostCommonPartnersColored}
+	\caption[Most common 5-compound subsets]{Most common 5-compound subsets within chemical sets.}
+	
+	\label{fig:mostcommonpartners}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Distribution Analysis}
+    \begin{figure}[h!]
+	\centering		
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/surface_entropy_fraction_VsChem}
+		\label{fig:surface_entropy_fractionVsChem}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/2d_hist_plot}
+		\label{fig:2d_hist_plot}
+	\end{subfigure}
+	\caption[Distribution analysis]{Distribution Analysis of surface features}	
+	\label{fig:distribution_analysis}
+\end{figure}
+\label{frame:DistributionAnalysis}
+\end{frame}
+
+
+\begin{frame}{Chemical Analysis}
+    \begin{figure}[h!]
+	\centering		
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/surfaceCompoundDistributions_sasa_skewness_hydrophobic_surface_fraction_surface_entropy_fraction_net_charge_normalized}
+		\label{fig:surfaceCompoundDistributions_sasa_skewness_hydrophobic_surface_fraction_surface_entropy_fraction_net_charge_normalized}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/sequenceChemDistributions_pI_mw_arom_gravy}
+		\label{fig:sequenceChemDistributions_pI_mw_arom_gravy}
+	\end{subfigure}
+	\caption[Distribution analysis]{Chemical Analysis of surface and sequence features}	
+	\label{fig:medianAnalysisSequenceAndSurface}
+\end{figure}
+\label{frame:ChemicalAnalysis}
+\end{frame}
+
+
+\begin{frame}{\gls{ks} Distance Analysis}
+\begin{figure}[h!]
+	\centering		
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/ks_distance_all_sequence}
+		\caption[Sequence feature \glsnamefont{ks} distance of chemicals]{ }
+		\label{fig:ks_distance_all_sequence}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/ks_distance_all}
+		\caption[Surface feature \gls{ks} distance of chemicals]{ }
+		\label{fig:ks_distance_all_surface}
+	\end{subfigure}
+	\caption[Distribution difference]{Distance Analysis}	
+	\label{fig:ks_distance_all_features}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{\gls{crims} Categorical Analysis}
+    \begin{figure}[h]
+    \includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/crims_data_analysis}
+	\caption[Analysis of \gls{crims} data]{\gls{crims} data analysis}
+	\label{fig:crims_categorical_analysis}
+\end{figure}
+\end{frame}
+

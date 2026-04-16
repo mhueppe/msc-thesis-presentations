@@ -1,0 +1,114 @@
+\section{Results}
+
+\subsection{Contrastive Performance}
+\begin{frame}{Score Distribution}
+    \begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/prediction_score_distribution}
+	\caption[Score Distribution]{The model consistently scores crystal conditions higher than non-crystal conditions, with a clear separation between the two distributions. Overfitting is observed.}
+	\label{fig:score_distribution}
+\end{figure}
+\end{frame}
+
+\begin{frame}{ROC and Confusion Matrices}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/roc_confusion_pdb_cropped.pdf}
+	\caption[Confusion Matrices]{Using a threshold the ranking can be converted into a binary classification. The model performs better than random. Biased towards predicting positives.}
+	\label{fig:roc_confusion}
+\end{figure}
+\end{frame}
+
+\subsection{CRIMS Performance}
+
+\begin{frame}{\gls{crims} Score Distributions}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/score_distribution_roc_pr_curve_crims.pdf}
+	\caption[Score distribution and \gls{crims} analysis]{On the gold-standard dataset the model performs better than random. Variance shows protein specific performance differences.}
+	\label{fig:score_distribution_curves}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Model Performance per Protein}
+    \begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/model_performance_per_protein_cm_highlighted}
+	\caption[Model Performance]{The model performs better than random on most metrics. The search space can be reduced. Performance varies across proteins. Biased towards predicting positives.}
+	\label{fig:model_performance}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Plate Predictions}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/plate_predictions_cropped_highlighted}	
+	\caption[Plate predictions]{Model Predictions for SD30009504. The model finds most crystal conditions while removing the search space drastically. Some crystal conditions are missed. Model does not understand effects of ATP/ADP.}
+	\label{fig:plate_predictions}
+\end{figure} 
+\end{frame}
+
+\subsection{Hyperparameter Optimization}
+
+\begin{frame}{Feature Importances}
+    \begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{../msc-thesis-code/data/dataExploration/plots/hyperparameter_importances}
+	\caption[Hyperparameter feature importance]{The most important features relate to the condition and the structure of the protein.}
+	\label{fig:feature_importances}
+\end{figure} 
+\end{frame}
+
+
+\subsection{Model Interpretation}
+
+\begin{frame}{Ablation Study}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/ablationStudy_without_surface}
+	\caption[Ablation Study]{Structure is the most important feature when scoring crystallization conditions.}
+	\label{fig:ablationStudy}
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Cluster Similarity Performance}
+    \begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/humology}
+	\caption[Cluster Similarity]{The model performs better on proteins with higher homology to the training set, but still shows some performance on proteins with low homology.}
+	\label{fig:cluster_similarity_performance}
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}{Data Study}
+    \begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/dataProportionPerformance}
+	\caption[Data proportion Study]{The model performs better with more data. Difference in proteins seems to be more important than the sheer number of samples. I.e. seeing two completely different proteins is more informative than seeing slight variations of the same protein.}
+	\label{fig:dataRatioStudy}
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Thank you!}
+	\centering
+    \begin{figure}[h]
+		\begin{subfigure}[t]{0.139\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Media/fabian_kern}
+	\end{subfigure}
+	\centering		
+	\begin{subfigure}[t]{0.13\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Media/aymelt_itzen}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.13\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Media/michael_hecht_bucher}
+	\end{subfigure}
+		\begin{subfigure}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Media/group_picture}
+	\end{subfigure}
+\end{figure}
+\end{frame}

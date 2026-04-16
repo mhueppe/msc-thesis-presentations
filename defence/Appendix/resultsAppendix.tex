@@ -1,0 +1,52 @@
+\subsection{Results}
+% Appendix Template
+\begin{frame}{Model Scaling}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/model_sizes}
+	\caption[Model size influence on Performance]{Model Scaling analysis}
+	\label{fig:model_scaling}
+\end{figure}
+\end{frame} 
+
+\begin{frame}{Recall at Top K}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{../msc-thesis-code/data/dataExploration/plots/recallAtTopK.pdf}
+	\caption[Recall at Top K]{Illustration of the recall performance for different K.}
+	\label{fig:recallAtTopK}
+\end{figure} 
+\label{frame:recallAtTopK}
+\end{frame}
+
+\begin{frame}{Ablation Study}
+\begin{figure}[h]
+	\centering
+    
+	\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/ablationStudy}			
+	\caption[Interference Ablation Study]{Illustration of a complete ablation study. Interestingly, the binding sites vector seem to be interfering with training and performance for both the mean margin metric (A) and \gls{auc} (B).}
+	\label{fig:ablationStudyFull}
+\end{figure} 
+\label{frame:ablationStudyFull}
+\end{frame}
+
+
+\begin{frame}{Dependency Study}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../msc-thesis-code/data/dataExploration/plots/dependencyStudy}			
+	\caption[Dependency Study]{Illustration of a dependency study. Similar trends to the ablation study is seen where the structure embedding seems to be the most important for both the mean margin (A) and \gls{auc} (B).}
+	\label{fig:dependencyStudy}
+\end{figure} 
+\label{frame:dependencyStudy}
+\end{frame}
+
+\begin{frame}{Samples Ratio vs. Performance}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.95\textwidth]{../msc-thesis-code/data/dataExploration/plots/sample_ratio_performance}			
+	\caption[Samples Ratio vs. Performance]{Illustration of performance study in relation to the performance for Top1 (A) and \gls{auc} (B). Even though the number of samples is smaller the performance is higher, which indicates that the sheer number of samples does not drive performance alone.}
+	\label{fig:ratio_samples}
+\end{figure} 
+\label{frame:ratio_samples}
+\end{frame}

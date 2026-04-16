@@ -1,0 +1,142 @@
+\subsubsection{Features}
+\begin{frame}{Condition-Protein Relationships}
+    \begin{figure}[h!]
+	\centering		
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/proteinVsCompound}
+		\caption[\gls{peg} co-occurence]{ }
+		\label{fig:cooccurencePegProtein}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.495\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/proteinDistributionpH_temp}
+		\caption[Protein vs. pH/temperature]{ }
+		\label{fig:proteinVspHTemperature}
+	\end{subfigure}
+	\caption[Relation of protein to condition]{Condition-Protein Relationships}	
+	\label{fig:proteinVsPEGComparison}
+\end{figure}
+\label{frame:proteinVsCondition}
+\end{frame}
+
+
+\begin{frame}[shrink=20]{Sequence Features Summary}
+    \begin{tabular}{|l|r|r|r|r|r|}
+\toprule
+sequence feature & mean & std & min & 50\% & max \\
+\midrule
+length & 262.29 & 190.94 & 1. & 228. & 3947.  \\ 
+mw & 29293.24 & 21401.14 & 89.09 & 25189.57 & 448642.60   \\
+pI & 6.94 & 1.90 & 4.05 & 6.29 & 12.  \\ 
+arom & 0.09 & 0.04 & 0. & 0.09 & 1.  \\ 
+gravy & -0.34 & 0.41 & -4.50 & -0.34 & 4.20  \\ 
+frac\_acidic & 0.12 & 0.05 & 0. & 0.12 & 1.  \\ 
+frac\_basic & 0.15 & 0.06 & 0. & 0.14 & 1.  \\ 
+net\_charge\_pH7 & -2.18 & 9.56 & -179.39 & -1.84 & 60.69  \\ 
+instability\_index & 37.42 & 15.95 & -86.08 & 36.74 & 524.52  \\ 
+frac\_unknown & 0. & 0.03 & 0. & 0. & 0.99  \\ 
+\bottomrule
+\end{tabular}
+\end{frame}
+
+
+\subsubsection{Surface Features}
+\begin{frame}[shrink=10]{Surface Features}
+
+\begin{longtable}{|p{1.5cm}||p{5cm}|p{12.6cm}|}
+\hline
+Length & Name & Description \\[4pt]
+\hline
+\endhead
+
+1 & \texttt{total\_area} & Total molecular surface area of the protein (typically in \AA$^2$) \\
+\hline
+1 & \texttt{n\_atoms} & Number of atoms in the (processed) structure used for feature computation \\
+\hline
+1 & \texttt{roughness} & Surface roughness / irregularity measure (higher = more corrugated surface) \\
+\hline
+1 & \texttt{apolar} & Apolar (hydrophobic) solvent-accessible surface area component \\
+\hline
+1 & \texttt{polar} & Polar solvent-accessible surface area component \\
+\hline
+1 & \texttt{sidechain\_fraction} & Fraction of surface area contributed by side chains (vs. backbone) \\
+\hline
+1 & \texttt{hydro\_polar\_contrast} & Contrast between hydrophobic and polar surface exposure (higher = stronger separation) \\
+\hline
+1 & \texttt{sasa\_skewness} & Skewness of the per-residue \gls{sasa} distribution (asymmetry of exposure across residues) \\
+\hline
+1 & \texttt{hydrophobic\_surface\_ fraction} & Fraction of total surface area that is hydrophobic / apolar \\
+\hline
+1 & \texttt{surface\_entropy\_fraction} & Fraction of surface residues with high side-chain conformational entropy (often flexible residues) \\
+\hline
+1 & \texttt{net\_charge\_raw} & Net charge computed from the sequence/structure without normalization \\
+\hline
+1 & \texttt{net\_charge\_normalized} & Net charge normalized (e.g., by length or surface area) for size-independent comparison \\
+\hline
+\end{longtable}
+\end{frame}
+
+
+\subsubsection{Surface Embeddings}
+\begin{frame}{Surface Representation}
+    \begin{itemize}
+        \item use \gls{dmasif} to retrieve a surface representation of the protein \citep{Sverrisson2020}
+        \item train a point cloud auto-encoder to compress the surface representation into a 256-dimensional embedding vector \citep{Pang2022}
+    \end{itemize}
+    \begin{figure}[h!]
+	\centering		
+	\begin{subfigure}[t]{0.45\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/reconstruction}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.45\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/reconstruction2}
+	\end{subfigure}
+	\caption[Surface point cloud auto-encoder examples]{Surface point cloud auto-encoder examples.}
+	\label{fig:proteinPointCloudAutoencoder}
+\end{figure}
+\end{frame}
+
+\subsubsection{Binding Site Prediction}
+\begin{frame}{Binding Site Prediction}
+    \begin{figure}[h]
+	\centering		
+	\begin{subfigure}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Media/binding_site9ewo}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Media/binding_site2fz3}
+	\end{subfigure}
+	\caption[Binding Site Prediction]{Prediction of binding sites for the protein \href{https://www.rcsb.org/structure/9EWO}{9EWO} and \href{https://www.rcsb.org/structure/2FZ3}{2FZ3}. The red highlighted spots represent parts of the surface that, according to the ProteinMAE, are likely binding sites \citep{Yuan2023}}
+	\label{fig:bindingSitePrediction}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[shrink=10]{Chemical Descriptors}
+\begin{longtable}{|p{1.5cm}||p{5cm}|p{12.6cm}|}
+\hline
+1 & \texttt{molecular\_weight} & Total molecular mass in Daltons \\ \hline
+1 & \texttt{heavy\_atom\_count} & Number of non-hydrogen atoms \\ \hline
+1 & \texttt{TPSA} & Topological polar surface area; a proxy for polarity and hydrogen bonding capacity \\ \hline
+1 & \texttt{HBD} & Number of hydrogen-bond donors \\ \hline
+1 & \texttt{HBA} & Number of hydorgen-bond acceptors \\ \hline
+1 & \texttt{LogP} & Estimated octanol/water partition coefficient; a proxy for hydrophobicity \\ \hline
+1 & \texttt{MR} & Molar refractivity; relates to polarizability and molecular volume \\ \hline
+1 & \texttt{RotT} & Number of rotable bonds; a measure of molecular flexibilty \\ \hline
+1 & \texttt{ring\_count} & Number of rings in the molecular graph \\ \hline
+1 & \texttt{fraction\_csp3} & Fraction of carbon atoms in $sp^3$ hydridization; indicates 3D character/saturation\\ \hline
+1 & \texttt{formal\_charge} & Net formal charge of the molecule \\ \hline
+1 & \texttt{n\_count} & Number of nitrogen atoms \\ \hline
+1 & \texttt{o\_count} & Number of oxygen atoms \\ \hline
+1 & \texttt{s\_count} & Number of sulfur atoms \\ \hline
+1 & \texttt{halogen\_count} & Number of halogen atoms (F, Cl, Br, I) \\ \hline
+1024 & \texttt{morgan\_fingerprint} & Sparse morgan fingerprint where each index is associated to the number of appearances of a certain molecular substructrue \\
+\hline
+\end{longtable}
+\label{frame:chemicalDescriptors}
+\end{frame}

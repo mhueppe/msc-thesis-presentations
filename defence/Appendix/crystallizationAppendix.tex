@@ -1,0 +1,62 @@
+
+\subsection{Protein Crystallization}
+\begin{frame}{Nucleation Barrier}
+    \begin{columns}[T]
+        \column{0.55\textwidth}
+        \begin{itemize}
+            \item \textbf{Surface Free Energy} destabilizes the nuclei $\Delta G_S = 4 \pi r^2 \gamma$
+            \item \textbf{Volume (Bulk) Free Energy} stabilizes the nuclei $\Delta G_V = \frac{4}{3} \pi r^3 \Delta g_v$
+            \item $\Delta g_v = \frac{\text{free energy}}{\text{unit volume}}$
+            \item $\Delta G = \Delta G_S + \Delta G_V$
+            \item $r^*$ = critical radius, bulk term dominates and growth is favorable
+            \item the free energy maximum $\Delta G^*$ is the \textbf{nucleation barrier}
+        \end{itemize}
+
+        \column{0.45\textwidth}
+        \vspace{-0.55cm}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\linewidth]{../msc-thesis-code/data/dataExploration/plots/free_energy_function}
+            \caption[Free Energy Nucleation Diagram]{Free Energy Nucleation Diagram}
+            \label{fig:nucleationBarrier}
+        \end{figure}
+    \end{columns}
+    \label{frame:NucleationBarrier}
+\end{frame}
+
+\begin{frame}{Vapor Diffusion}
+    \begin{columns}[T]
+        \column{0.55\textwidth}
+\begin{itemize}
+    \item Vapor diffusion changes the droplet composition over time
+    \item Loss of water increases both \textbf{protein concentration} and \textbf{precipitant concentration}
+    \item In the phase diagram, this means the system moves from \textbf{undersaturation} toward \textbf{supersaturation}
+    \item Reaching the \textbf{nucleation zone} enables the formation of crystal nuclei
+    \item Remaining in or returning to the \textbf{metastable zone} promotes growth of fewer, larger crystals
+\end{itemize}
+        \column{0.45\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\linewidth]{Figures/hangingDrop}
+            \caption[Hanging Drop Vapor Diffusion]{Hanging Drop Vapor Diffusion}
+            \label{fig:nucleationBarrier}
+        \end{figure}
+    \end{columns}
+    \label{frame:NucleationBarrier}
+\end{frame}
+
+\begin{frame}{Compounds \& X-ray Diffraction}
+    \begin{itemize}
+        \item \textbf{Organic precipitants:} PEG lower protein solubility and drive the system toward supersaturation
+        \item \textbf{Salts:} Salt concentration can either increase or decrease protein solubility
+        \item \textbf{Buffers:} Buffers set the pH and thus shape the protein’s surface charge distribution $\rightarrow$ intermolecular interactions and crystal formation.
+    \end{itemize}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Figures/x-ray-crystallography.pdf}
+        \caption[X-ray Diffraction]{X-ray Diffraction setup}
+        \label{fig:phaseDiagram}
+    \end{figure}
+    \label{frame:CompoundsXRay}
+\end{frame}

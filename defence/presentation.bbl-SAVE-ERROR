@@ -1,0 +1,519 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Heinzinger2023}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=2bdd42359f11105bd7655dbe9af7a040}{%
+           family={Heinzinger},
+           familyi={H\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=029f1e63bf00a5c83af14890bb261b08}{%
+           family={Weissenow},
+           familyi={W\bibinitperiod},
+           given={K},
+           giveni={K\bibinitperiod}}}%
+        {{hash=87098efa99fb58a8035be8a4a87f4623}{%
+           family={Sanchez},
+           familyi={S\bibinitperiod},
+           given={JG},
+           giveni={J\bibinitperiod}}}%
+        {{hash=611089b8fabdabb9d7a5446fdba0d4ac}{%
+           family={Henkel},
+           familyi={H\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d7638cec814f1771bc24445e030b0a0e}{%
+           family={Steinegger},
+           familyi={S\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=73de0d118c40c2c243d3753b96811aa3}{%
+           family={Rost},
+           familyi={R\bibinitperiod},
+           given={B},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc03162b2f2ac103025987b33fb58b62}
+      \strng{fullhash}{cec5a5de73ca68fa61a60fdd0d27f22a}
+      \strng{fullhashraw}{cec5a5de73ca68fa61a60fdd0d27f22a}
+      \strng{bibnamehash}{dc03162b2f2ac103025987b33fb58b62}
+      \strng{authorbibnamehash}{dc03162b2f2ac103025987b33fb58b62}
+      \strng{authornamehash}{dc03162b2f2ac103025987b33fb58b62}
+      \strng{authorfullhash}{cec5a5de73ca68fa61a60fdd0d27f22a}
+      \strng{authorfullhashraw}{cec5a5de73ca68fa61a60fdd0d27f22a}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{URL https://www. biorxiv. org/content/early/2023/07/25/2023.07}
+      \field{title}{Prostt5: Bilingual language model for protein sequence and structure. bioRxiv, 2023}
+      \field{volume}{23}
+      \field{year}{2023}
+    \endentry
+    \entry{Mall2025}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=0cf1009934f60f90764eaefa90f10686}{%
+           family={Mall},
+           familyi={M\bibinitperiod},
+           given={Raghvendra},
+           giveni={R\bibinitperiod}}}%
+        {{hash=bb16035b1e837bf568287a5a81fa4ace}{%
+           family={Kaushik},
+           familyi={K\bibinitperiod},
+           given={Rahul},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e3cfe1be34ca9589747a6190fd34da8a}{%
+           family={Martinez},
+           familyi={M\bibinitperiod},
+           given={Zachary\bibnamedelima A.},
+           giveni={Z\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5ffc469d4f5f46d4c64f470a4d69271a}{%
+           family={Thomson},
+           familyi={T\bibinitperiod},
+           given={Matt\bibnamedelima W.},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=89ee659d4c7f153d3a42a70b3ee05ea5}{%
+           family={Castiglione},
+           familyi={C\bibinitperiod},
+           given={Filippo},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{777a1f4d272f955b918ec46cf230c299}
+      \strng{fullhash}{2052cf20d8658dc822a834e8c6b394b4}
+      \strng{fullhashraw}{2052cf20d8658dc822a834e8c6b394b4}
+      \strng{bibnamehash}{777a1f4d272f955b918ec46cf230c299}
+      \strng{authorbibnamehash}{777a1f4d272f955b918ec46cf230c299}
+      \strng{authornamehash}{777a1f4d272f955b918ec46cf230c299}
+      \strng{authorfullhash}{2052cf20d8658dc822a834e8c6b394b4}
+      \strng{authorfullhashraw}{2052cf20d8658dc822a834e8c6b394b4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The problem of protein structure determination is usually solved by X-ray crystallography. Several in silico deep learning methods have been developed to overcome the high attrition rate, cost of experiments and extensive trial-and-error settings, for predicting the crystallization propensities of proteins based on their sequences. In this work, we benchmark the power of open protein language models (PLMs) through the TRILL platform, a be-spoke framework democratizing the usage of PLMs for the task of predicting crystallization propensities of proteins. By comparing LightGBM / XGBoost classifiers built on the average embedding representations of proteins learned by different PLMs, such as ESM2, Ankh, ProtT5-XL, ProstT5, xTrimoPGLM, SaProt with the performance of state-of-the-art sequence-based methods like DeepCrystal, ATTCrys and CLPred, we identify the most effective methods for predicting crystallization outcomes. The LightGBM classifiers utilizing embeddings from ESM2 model with 30 and 36 transformer layers and 150 and 3000 million parameters respectively have performance gains by 3-\$\$5{\textbackslash}\%\$\$than all compared models for various evaluation metrics, including AUPR (Area Under Precision-Recall Curve), AUC (Area Under the Receiver Operating Characteristic Curve), and F1 on independent test sets. Furthermore, we fine-tune the ProtGPT2 model available via TRILL to generate crystallizable proteins. Starting with 3000 generated proteins and through a step of filtration processes including consensus of all open PLM-based classifiers, sequence identity through CD-HIT, secondary structure compatibility, aggregation screening, homology search and foldability evaluation, we identified a set of 5 novel proteins as potentially crystallizable.}
+      \field{issn}{2045-2322}
+      \field{journaltitle}{Scientific Reports}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Benchmarking protein language models for protein crystallization}
+      \field{urlday}{31}
+      \field{urlmonth}{7}
+      \field{urlyear}{2025}
+      \field{volume}{15}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \field{pages}{2381}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/s41598-025-86519-5
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:Mall2025 - Benchmarking Protein Language Models for Protein Crystallization.pdf:PDF:https\://www.nature.com/articles/s41598-025-86519-5.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nature.com/articles/s41598-025-86519-5
+      \endverb
+      \verb{url}
+      \verb https://www.nature.com/articles/s41598-025-86519-5
+      \endverb
+      \keyw{Computer science,Mathematics and computing,X-ray crystallography}
+    \endentry
+    \entry{Pang2022}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=4ec7252e2b8529ca4f7b34f83189fa6f}{%
+           family={Pang},
+           familyi={P\bibinitperiod},
+           given={Yatian},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=7732155c540af0f7b63a434ddb5f9c2e}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Wenxiao},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e0fd26e97776f1d542e5759030e36504}{%
+           family={Tay},
+           familyi={T\bibinitperiod},
+           given={Francis\bibnamedelima EH},
+           giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=c0e0d23e2d09e45e6f51cc2bcea6d9f9}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=7734b80d050024ca0fefbde5a51e2473}{%
+           family={Tian},
+           familyi={T\bibinitperiod},
+           given={Yonghong},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=218fa32d4e65e6f95699163d9632ea2b}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{c5e4c8c42a081fd82b9284bb2119d7d4}
+      \strng{fullhash}{0312b73b931d45eaf2303363306b74ae}
+      \strng{fullhashraw}{0312b73b931d45eaf2303363306b74ae}
+      \strng{bibnamehash}{c5e4c8c42a081fd82b9284bb2119d7d4}
+      \strng{authorbibnamehash}{c5e4c8c42a081fd82b9284bb2119d7d4}
+      \strng{authornamehash}{c5e4c8c42a081fd82b9284bb2119d7d4}
+      \strng{authorfullhash}{0312b73b931d45eaf2303363306b74ae}
+      \strng{authorfullhashraw}{0312b73b931d45eaf2303363306b74ae}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision--ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part II}
+      \field{title}{Masked autoencoders for point cloud self-supervised learning}
+      \field{year}{2022}
+      \field{pages}{604\bibrangedash 621}
+      \range{pages}{18}
+    \endentry
+    \entry{Rives2021}{article}{}{}
+      \name{author}{11}{}{%
+        {{hash=77c951217a087dd3f5981a0a79a87222}{%
+           family={Rives},
+           familyi={R\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=da5c8b718ba12127f53fc1f899600a79}{%
+           family={Meier},
+           familyi={M\bibinitperiod},
+           given={Joshua},
+           giveni={J\bibinitperiod}}}%
+        {{hash=21e17f70ffb714b5a29005c2a54cec93}{%
+           family={Sercu},
+           familyi={S\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+        {{hash=7248a724d5b9c938f0548c4190670225}{%
+           family={Goyal},
+           familyi={G\bibinitperiod},
+           given={Siddharth},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c40352c194e60a3ef458ee7e8685afb5}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Zeming},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=249e46ca35f12b4af5a5440812627786}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d88c28182afb70b00173f1941543c0dd}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Demi},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b13aa2bad5258fa5ef7a733f2d305a49}{%
+           family={Ott},
+           familyi={O\bibinitperiod},
+           given={Myle},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0eae2d56a9cbb037c64028d6573877a7}{%
+           family={Zitnick},
+           familyi={Z\bibinitperiod},
+           given={C.\bibnamedelimi Lawrence},
+           giveni={C\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=e9e85766c666f77671e38d1698140090}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Jerry},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a6784304d1cc890b2cb6c6c7f2f3fd76}{%
+           family={Fergus},
+           familyi={F\bibinitperiod},
+           given={Rob},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Proceedings of the National Academy of Sciences}%
+      }
+      \strng{namehash}{7c95cea6349a7985f77e5b3fcc494ed6}
+      \strng{fullhash}{292a283f55142c3b83270343322f26e3}
+      \strng{fullhashraw}{292a283f55142c3b83270343322f26e3}
+      \strng{bibnamehash}{7c95cea6349a7985f77e5b3fcc494ed6}
+      \strng{authorbibnamehash}{7c95cea6349a7985f77e5b3fcc494ed6}
+      \strng{authornamehash}{7c95cea6349a7985f77e5b3fcc494ed6}
+      \strng{authorfullhash}{292a283f55142c3b83270343322f26e3}
+      \strng{authorfullhashraw}{292a283f55142c3b83270343322f26e3}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In the field of artificial intelligence, a combination of scale in data and model capacity enabled by unsupervised learning has led to major advances in representation learning and statistical generation. In the life sciences, the anticipated growth of sequencing promises unprecedented data on natural sequence diversity. Protein language modeling at the scale of evolution is a logical step toward predictive and generative artificial intelligence for biology. To this end, we use unsupervised learning to train a deep contextual language model on 86 billion amino acids across 250 million protein sequences spanning evolutionary diversity. The resulting model contains information about biological properties in its representations. The representations are learned from sequence data alone. The learned representation space has a multiscale organization reflecting structure from the level of biochemical properties of amino acids to remote homology of proteins. Information about secondary and tertiary structure is encoded in the representations and can be identified by linear projections. Representation learning produces features that generalize across a range of applications, enabling state-of-the-art supervised prediction of mutational effect and secondary structure and improving state-of-the-art features for long-range contact prediction.}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{month}{4}
+      \field{number}{15}
+      \field{title}{Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences}
+      \field{urlday}{6}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{volume}{118}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{e2016239118}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1073/pnas.2016239118
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:https\://www.pnas.org/doi/pdf/10.1073/pnas.2016239118:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.pnas.org/doi/full/10.1073/pnas.2016239118
+      \endverb
+      \verb{url}
+      \verb https://www.pnas.org/doi/full/10.1073/pnas.2016239118
+      \endverb
+    \endentry
+    \entry{Sverrisson2020}{report}{}{}
+      \name{author}{4}{}{%
+        {{hash=633425219f9c7ae113278834aad2f823}{%
+           family={Sverrisson},
+           familyi={S\bibinitperiod},
+           given={Freyr},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e7a326d1eb18178c7016ac80ecb9e809}{%
+           family={Feydy},
+           familyi={F\bibinitperiod},
+           given={Jean},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cfac0a90e7842366bd0d9bb5d7d7fe62}{%
+           family={Correia},
+           familyi={C\bibinitperiod},
+           given={Bruno\bibnamedelima E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=a0c6e9e0629d03c0bfec15575c55c598}{%
+           family={Bronstein},
+           familyi={B\bibinitperiod},
+           given={Michael\bibnamedelima M.},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {bioRxiv}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{1092c68c87afa167c9ed9ba341f817e6}
+      \strng{fullhash}{e451599176b8e39522e350f9a38f8e66}
+      \strng{fullhashraw}{e451599176b8e39522e350f9a38f8e66}
+      \strng{bibnamehash}{1092c68c87afa167c9ed9ba341f817e6}
+      \strng{authorbibnamehash}{1092c68c87afa167c9ed9ba341f817e6}
+      \strng{authornamehash}{1092c68c87afa167c9ed9ba341f817e6}
+      \strng{authorfullhash}{e451599176b8e39522e350f9a38f8e66}
+      \strng{authorfullhashraw}{e451599176b8e39522e350f9a38f8e66}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Proteins’ biological functions are defined by the geometric and chemical structure of their 3D molecular surfaces. Recent works have shown that geometric deep learning can be used on mesh-based representations of proteins to identify potential functional sites, such as binding targets for potential drugs. Unfortunately though, the use of meshes as the underlying representation for protein structure has multiple drawbacks including the need to pre-compute the input features and mesh connectivities. This becomes a bottleneck for many important tasks in protein science. In this paper, we present a new framework for deep learning on protein structures that addresses these limitations. Among the key advantages of our method are the computation and sampling of the molecular surface on-the-fly from the underlying atomic point cloud and a novel efficient geometric convolutional layer. As a result, we are able to process large collections of proteins in an end-to-end fashion, taking as the sole input the raw 3D coordinates and chemical types of their atoms, eliminating the need for any hand-crafted pre-computed features. To showcase the performance of our approach, we test it on two tasks in the field of protein structural bioinformatics: the identification of interaction sites and the prediction of protein-protein interactions. On both tasks, we achieve state-of-the-art performance with much faster run times and fewer parameters than previous models. These results will considerably ease the deployment of deep learning methods in protein science and open the door for end-to-end differentiable approaches in protein modeling tasks such as function prediction and design.}
+      \field{chapter}{New Results}
+      \field{month}{12}
+      \field{note}{Type: article}
+      \field{title}{Fast end-to-end learning on protein surfaces}
+      \field{type}{techreport}
+      \field{urlday}{6}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \field{pages}{2020.12.28.424589}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1101/2020.12.28.424589
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:https\://www.biorxiv.org/content/biorxiv/early/2020/12/29/2020.12.28.424589.full.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.biorxiv.org/content/10.1101/2020.12.28.424589v1
+      \endverb
+      \verb{url}
+      \verb https://www.biorxiv.org/content/10.1101/2020.12.28.424589v1
+      \endverb
+    \endentry
+    \entry{Yang2024}{article}{}{}
+      \name{author}{8}{}{%
+        {{hash=0da52cd11a66d148a09e85d78fab8e2b}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yuxin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=2239bbb8c7d19aed02eb200216344498}{%
+           family={Jerger},
+           familyi={J\bibinitperiod},
+           given={Abby},
+           giveni={A\bibinitperiod}}}%
+        {{hash=34827b4d04a8bc6a38a7c876a855afda}{%
+           family={Feng},
+           familyi={F\bibinitperiod},
+           given={Song},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c174a85ed3755a4d44bfca138f147d7a}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Zixu},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=e7dfca56dea9f17dae2062b7eac8681d}{%
+           family={Brasfield},
+           familyi={B\bibinitperiod},
+           given={Christina},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6cdb98d2699204fbc9a273a161a96f2e}{%
+           family={Cheung},
+           familyi={C\bibinitperiod},
+           given={Margaret\bibnamedelima S.},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=bf321539388522293bf7209336b582ba}{%
+           family={Zucker},
+           familyi={Z\bibinitperiod},
+           given={Jeremy},
+           giveni={J\bibinitperiod}}}%
+        {{hash=7b76337a9aaa3deed1beb34920ac6bd6}{%
+           family={Guan},
+           familyi={G\bibinitperiod},
+           given={Qiang},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{46c587287a8ed93e1e73237f9a5a8f47}
+      \strng{fullhash}{6ad954bf7a02e64dc41423084832fcaa}
+      \strng{fullhashraw}{6ad954bf7a02e64dc41423084832fcaa}
+      \strng{bibnamehash}{46c587287a8ed93e1e73237f9a5a8f47}
+      \strng{authorbibnamehash}{46c587287a8ed93e1e73237f9a5a8f47}
+      \strng{authornamehash}{46c587287a8ed93e1e73237f9a5a8f47}
+      \strng{authorfullhash}{6ad954bf7a02e64dc41423084832fcaa}
+      \strng{authorfullhashraw}{6ad954bf7a02e64dc41423084832fcaa}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Recent years have witnessed the remarkable progress of deep learning within the realm of scientific disciplines, yielding a wealth of promising outcomes. A prominent challenge within this domain has been the task of predicting enzyme function, a complex problem that has seen the development of numerous computational methods, particularly those rooted in deep learning techniques. However, the majority of these methods have primarily focused on either amino acid sequence data or protein structure data, neglecting the potential synergy of combining both modalities. To address this gap, we propose a Contrastive Learning framework for Enzyme functional ANnotation prediction combined with protein amino acid sequences and Contact maps (CLEAN-Contact). We rigorously evaluate the performance of our CLEAN-Contact framework against the state-of-the-art enzyme function prediction models using multiple benchmark datasets. Using CLEAN-Contact, we predict previously unknown enzyme functions within the proteome of Prochlorococcus marinus MED4. Our findings convincingly demonstrate the substantial superiority of our CLEAN-Contact framework, marking a significant step forward in enzyme function prediction accuracy.}
+      \field{issn}{2399-3642}
+      \field{journaltitle}{Communications Biology}
+      \field{month}{12}
+      \field{number}{1}
+      \field{title}{Improved enzyme functional annotation prediction using contrastive learning with structural inference}
+      \field{urlday}{15}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{volume}{7}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{1690}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/s42003-024-07359-z
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:Yang2024 - Improved Enzyme Functional Annotation Prediction Using Contrastive Learning with Structural Inference.pdf:PDF:https\://www.nature.com/articles/s42003-024-07359-z.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nature.com/articles/s42003-024-07359-z
+      \endverb
+      \verb{url}
+      \verb https://www.nature.com/articles/s42003-024-07359-z
+      \endverb
+      \keyw{Classification and taxonomy,Computational models,Data processing,Machine learning,Protein function predictions}
+    \endentry
+    \entry{Yuan2023}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=8a078498c0d2c29b7088c890624a48d5}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Mingzhi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d33373a81dbbb9f0e1efd59c5f9c4c78}{%
+           family={Shen},
+           familyi={S\bibinitperiod},
+           given={Ao},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cbdb46bf5ffd347447918075df275ad9}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Kexue},
+           giveni={K\bibinitperiod}}}%
+        {{hash=8d6a70c221e85eb4a185c7907f960dbc}{%
+           family={Guan},
+           familyi={G\bibinitperiod},
+           given={Jiaming},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3ad3c32f9299896950c3001c52184c92}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Yingfan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=fad3747d42a586a1075c58169533efb6}{%
+           family={Qiao},
+           familyi={Q\bibinitperiod},
+           given={Qin},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=3072e3af98ad540cb79482de8676fe08}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Manning},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{fe68d1e9fb8758cbc934846479b0ead6}
+      \strng{fullhash}{2657ddd0a005624c3cbfb077aa335cd9}
+      \strng{fullhashraw}{2657ddd0a005624c3cbfb077aa335cd9}
+      \strng{bibnamehash}{fe68d1e9fb8758cbc934846479b0ead6}
+      \strng{authorbibnamehash}{fe68d1e9fb8758cbc934846479b0ead6}
+      \strng{authornamehash}{fe68d1e9fb8758cbc934846479b0ead6}
+      \strng{authorfullhash}{2657ddd0a005624c3cbfb077aa335cd9}
+      \strng{authorfullhashraw}{2657ddd0a005624c3cbfb077aa335cd9}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{12}
+      \field{title}{ProteinMAE: masked autoencoder for protein surface self-supervised learning}
+      \field{volume}{39}
+      \field{year}{2023}
+      \field{pages}{btad724}
+      \range{pages}{-1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

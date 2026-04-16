@@ -1,0 +1,104 @@
+
+\section{Introduction}
+\subsection{Motivation}
+
+% Not only drug targets, why is structural information essential? -> to understand diseases it is essential how to understand proteins and their function, understand disease mechanisms, 
+\begin{frame}{Drug Targets}
+    \begin{columns}[T]
+        \column{0.45\textwidth}
+        \begin{itemize}
+    
+            \item majority of drugs act by binding to proteins and modulate their function
+            \newline $\Rightarrow$ Drug action is primarily mediated through protein interactions
+            \newline $\Rightarrow$ Structural information is essential for understanding  cellular function, and disease mechanisms and designing drugs
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \begin{figure}[h]
+        \centering
+        \includegraphics[width=1\linewidth]{../msc-thesis-code/data/dataExploration/plots/drug_targets_classified}
+        \caption[\href{https://www.ebi.ac.uk/chembl/}{ChEMBL} Drug Targets]{Drug Targets parsed from \href{https://www.ebi.ac.uk/chembl/}{ChEMBL} \tiny (\today) (cf. \ref{frame:ChEMBL})}
+        \label{fig:drug_partners_classified}
+    \end{figure}
+    \end{columns}
+\end{frame}
+
+% Understand difference between resolution methods, nmr-> only for very small proteins, em -> no size bounds (not for very small proteins at least 50 daltons) , x-ray crystallography -> no size bounds and high resolution
+\begin{frame}{Structure determination methods}
+    \begin{columns}[T]
+        \column{0.45\textwidth}
+        \begin{itemize}
+            \item The majority of structures in the Protein Data Bank are solved using X-ray crystallography (84\%)
+            \item X-ray crystallography requires high-quality protein crystals
+            \item Protein crystallization is a major bottleneck due to its high-dimensional and empirical search space
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \begin{figure}[h]
+        \centering
+        \includegraphics[width=1\linewidth]{../msc-thesis-code/data/dataExploration/plots/determination_method}
+        \caption[Experimental structure determination methods]{Experimental structure determination methods in the \href{https://www.rcsb.org/stats/summary?utm_source=chatgpt.com}{pdb} \tiny (\today)}
+        \label{fig:structure_determination}
+    \end{figure}
+    \end{columns}
+\end{frame}
+
+% less text, foot not reference style not numbers
+\begin{frame}{Difficulty of Crystallization}
+    \begin{columns}[T]
+        \column{0.45\textwidth}
+        \begin{itemize}
+            \item The majority of conditions for a given protein do not result in a crystal \citep{Mall2025}
+            \newline $\Rightarrow$ Reducing the search space can significantly accelerate structure determination
+            \newline $\Rightarrow$ Goal of this thesis: Narrowing the search space by scoring conditions in-silico
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../msc-thesis-code/data/dataExploration/plots/crystallization_success}
+        \caption[Percentage of Conditions leading to crystals]{Percentage of Conditions leading to crystals for Itzen Group}
+        \label{fig:crystallization_sucess}
+    \end{figure}
+    \end{columns}
+    \label{frame:crystallization_sucess}
+
+\end{frame}
+
+\subsection{Protein Crystallization}
+\begin{frame}{Protein Crystallization}
+    \begin{columns}[T]
+        \column{0.59\textwidth}
+        \begin{itemize}[<+->]
+            \item The relation between \textbf{protein} and \textbf{precipitant concentration} defines different protein zones
+            \item \textbf{Undersaturation:} protein stays dissolved
+            \item \textbf{Nucleation zone:} new crystal nuclei can form {\tiny (cf. \ref{frame:NucleationBarrier})}
+            \item \textbf{Metastable zone:} crystals can grow, but no spontaneous nucleation  {\tiny (cf. \ref{frame:NucleationBarrier})}
+            \item \textbf{Precipitation zone:} excessive supersaturation leads to uncontrolled aggregation or many small crystals
+            \item When a crystal is obtained, X-ray diffraction is used to determine the structure of the protein  {\tiny (cf. \ref{frame:Compounds})}
+        \end{itemize}
+
+        \column{0.42\textwidth}
+        \vspace{-0.55cm}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\linewidth]{Figures/phaseDiagram.pdf}
+            \caption[Phase Diagram]{Phase Diagram of Protein Crystallization}
+            \label{fig:phaseDiagram}
+        \end{figure}
+    \end{columns}
+    \label{frame:PhaseDiagram}
+\end{frame}
+
+\subsection{Protein Crystallization}
+
+\subsection{Pipeline}
+\begin{frame}{Pipeline}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Figures/pipeline.pdf}
+        \label{fig:pipeline}
+    \end{figure}
+    \label{frame:Pipeline}
+\end{frame}

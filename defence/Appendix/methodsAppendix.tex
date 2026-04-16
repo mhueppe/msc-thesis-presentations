@@ -1,0 +1,75 @@
+\subsection{Methods}
+
+\begin{frame}{Row-wise Loss: Protein \texorpdfstring{$\rightarrow$}{->} Condition}    
+    \begin{itemize}
+        \item The row-wise loss evaluates whether each protein retrieves all valid conditions:
+        \[
+            \mathcal{L}_{\text{row}} =
+            - \frac{1}{B} \sum_{i=1}^{B}
+            \frac{1}{|P(i)|}
+            \sum_{j \in P(i)} \log p_{ij}
+        \]
+        \item Meaning:
+        \begin{itemize}
+            \item $P(i)$ is the set of positive conditions for protein $i$
+            \item this may include multiple indices because duplicates are allowed
+            \item $|P(i)|$ is the number of positives for protein $i$
+        \end{itemize}
+        \item The loss averages over:
+        \begin{itemize}
+            \item all positives of one anchor protein
+            \item all proteins in the batch
+        \end{itemize}
+        \item The loss becomes small when all true conditions receive high probability
+    \end{itemize}
+    \label{frame:row_wise_loss}
+\end{frame}
+
+\begin{frame}{Column-wise Loss: Condition \texorpdfstring{$\rightarrow$}{->} Protein}    
+    \begin{itemize}
+        \item A symmetric loss is also computed in the reverse direction:
+        \[
+            \mathcal{L}_{\text{col}} =
+            - \frac{1}{B} \sum_{j=1}^{B}
+            \frac{1}{|Q(j)|}
+            \sum_{i \in Q(j)} \log p_{ij}
+        \]
+        \item Meaning:
+        \begin{itemize}
+            \item $Q(j)$ is the set of proteins associated with condition $j$
+            \item $|Q(j)|$ is the number of matching proteins for that condition
+        \end{itemize}
+        \item Intuition:
+        \begin{itemize}
+            \item not only should proteins retrieve conditions
+            \item conditions should also retrieve associated proteins
+        \end{itemize}
+        \item This makes the training objective bidirectional
+    \end{itemize}
+    \label{frame:column_wise_loss}
+\end{frame}
+
+\begin{frame}{Final Symmetric Ranking Loss}    
+    \begin{itemize}
+        \item Both directional losses are combined into one final objective:
+        \[
+            \mathcal{L}_{\text{rank}} =
+            (1 - \lambda)\,\mathcal{L}_{\text{row}} +
+            \lambda\,\mathcal{L}_{\text{col}}
+        \]
+        \item Meaning:
+        \begin{itemize}
+            \item $\mathcal{L}_{\text{row}}$ emphasizes protein $\rightarrow$ condition retrieval
+            \item $\mathcal{L}_{\text{col}}$ emphasizes condition $\rightarrow$ protein retrieval
+            \item $\lambda \in [0,1]$ balances both directions
+        \end{itemize}
+        \item Special cases:
+        \begin{itemize}
+            \item $\lambda = 0$: only row-wise loss
+            \item $\lambda = 1$: only column-wise loss
+            \item $\lambda = 0.5$: equal weighting
+        \end{itemize}
+        \item This encourages a symmetric shared embedding space
+    \end{itemize}
+    \label{frame:final_symmetric_ranking_loss}
+\end{frame}

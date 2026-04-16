@@ -1,0 +1,81 @@
+\section{Model}
+\begin{frame}{Model}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Figures/pipelineModel.pdf}
+        \label{fig:pipelineModel}
+    \end{figure}
+    \label{frame:pipelineModel}
+\end{frame}
+
+\subsection{Model Architecture}
+\begin{frame}{Model Architecture}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1.05\linewidth]{Figures/model_architecture_horizontal.pdf}
+        \caption[Model Architecture]{Model Architecture}
+        \label{fig:modelArchitecture}
+    \end{figure}
+    \label{frame:ModelArchitecture}
+\end{frame}
+
+\subsection{Training Procedure}
+\begin{frame}{Training Procedure}
+    \setbeamercovered{transparent=15}
+    \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{itemize}[<+->]
+        \item Batch:
+        \begin{equation}
+            \{(x_p^{(i)}, x_c^{(i)})\}_{i=1}^{B}
+        \end{equation}
+
+        \item Embed protein and condition independently:
+        \begin{equation}
+            z_p^{(i)} = f_p(x_p^{(i)}), \qquad
+            z_c^{(i)} = f_c(x_c^{(i)})
+        \end{equation}
+
+        \item Compute pairwise similarities:
+        \begin{equation}
+            S_{ij} =
+            \frac{z_p^{(i)}}{\|z_p^{(i)}\|_2}^{\top}
+            \frac{z_c^{(j)}}{\|z_c^{(j)}\|_2}
+        \end{equation}
+
+        \item Treat duplicate conditions as additional positives
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \begin{itemize}[<+->]
+        \item Compute row-wise softmax probabilities:
+        \begin{equation}
+            p_{ij} =
+            \frac{\exp(S_{ij}/\tau)}
+            {\sum_{k=1}^{B} \exp(S_{ik}/\tau)}
+        \end{equation}
+
+        \item Compute row-wise ranking loss:
+        \begin{equation}
+            \mathcal{L} =
+            - \frac{1}{B} \sum_{i=1}^{B}
+            \frac{1}{|P(i)|}
+            \sum_{j \in P(i)} \log p_{ij}
+        \end{equation}
+
+        \item Inference:
+            \begin{equation}
+                s_j = z_p^\top z_c^{(j)}
+            \end{equation}
+    \end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Pipeline}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Figures/pipeline.pdf}
+    \end{figure}
+\end{frame}

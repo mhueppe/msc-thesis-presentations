@@ -1,0 +1,113 @@
+\section{Features}
+\begin{frame}{Data}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Figures/pipelineFeatures.pdf}
+        \label{fig:pipelineFeatures}
+    \end{figure}
+    \label{frame:pipelineFeatures}
+\end{frame}
+
+
+% Explain sequence features on this slide 
+% fix prostT5 error
+% only mention Prost5 in seperate slide others on this slide
+% add condition features
+\begin{frame}{Features}
+    \begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/feature.pdf}
+		\caption[Feature overview]{Feature overview}
+		\label{fig:featureOverview}
+	\end{figure}
+\end{frame}
+
+
+\subsection{Sequence}
+\begin{frame}[shrink=10]{Sequence Features}
+
+\begin{longtable}{|p{1.5cm}||p{5cm}|p{12cm}|}
+\hline
+Length & Name & Description \\[4pt]
+\hline
+\endhead
+1 & \texttt{length} & Number of residues in the protein sequence \\
+\hline
+1 & \texttt{\gls{mw}} & Molecular weight of the protein in Daltons, calculated from the amino acid composition \\
+\hline
+1 & \texttt{\gls{pi}} & Isoelectric point; the pH at which the protein has zero net electrical charge  \\
+\hline
+1 & \texttt{arom} & Aromaticity; fraction of amino acids that are aromatic (F, W, Y) in the sequence  \\
+\hline
+1 & \texttt{grvy} & Grand Average of Hydropathy; average hydrophobicity of the sequence, indicating overall hydrophobic vs. hydrophilic character \\
+\hline
+1 &\texttt{frac\_acidic} & Fraction of acidic amino acids (D, E) in the sequence  \\
+\hline
+1 &\texttt{frac\_basic} & Fraction of basic amino acids (K, R, H) in the sequence  \\
+\hline
+1 &\texttt{net\_charge\_pH\_7} & Estimated net electrical charge of the protein at pH 7 \\
+\hline
+1 &\texttt{instability\_index} & Empirical score predicting in vitro protein stability; values $\ge$ 40 suggest instability\\
+\hline
+1 &\texttt{frac\_unknown} & Fraction of residues in the sequence that are unknown or non-canonical amino acids \\
+\hline
+20 &\texttt{A, C, D, ..., V, W, Y} & Count of each canonical amino acid in the sequence (e.g. \texttt{A}=number of alanine residues)  \\
+\hline
+\end{longtable}
+\end{frame}
+
+\subsection{ESM}
+% In appendix explain on feature introduction slide
+\begin{frame}[shrink=10]{Evolutionary Scale Modeling}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item 250million sequences 
+            \item masked language modeling task
+            \item 650M parameters 
+            \item 1280-dimensional embedding vector
+            \item biochemical properties, homology, motifs \& structural information \citep{Rives2021}
+            \item downstream use for structure prediction \& function annotation \citep{Rives2021, Yang2024}
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{../msc-thesis-code/data/dataExploration/plots/proteinEmbedding}
+		\caption[Protein sequence embedding]{Protein Sequence Embedding using \gls{esm} \citep{Rives2021}}
+		\label{fig:proteinEmbedding}
+	    \end{figure}
+    \end{columns}
+\end{frame}
+
+
+\subsection{ProstT5}
+\begin{frame}{ProstT5}
+    \begin{itemize}
+        \item bidirectional translation between protein sequence and structure \citep{Heinzinger2023}
+        \item structure represented by 3Di alphabet, which converts local 3D residue interactions into a discrete sequence of 20 structural states
+        \item 
+        \item trained using span denoising and sequence $\leftrightarrow$ structure translation
+    \end{itemize}
+     \begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{Figures/ProstT5Architecture.pdf}
+		\label{fig:prostT5Architecture}
+	    \end{figure}
+\end{frame}
+
+\subsection{Condition}
+\begin{frame}{Condition Features}
+    \begin{enumerate}
+        \item Token representation
+        \item Physicochemical representation {\tiny (cf. \ref{frame:chemicalDescriptors})}
+        \item Morgan Fingerprints {\tiny (cf. \ref{frame:chemicalDescriptors})}
+    \end{enumerate}
+     \begin{figure}
+		\centering
+		\includegraphics[width=0.8\linewidth]{Figures/condition_to_finger_print.pdf}
+		\label{fig:conditionToFingerprint}
+	\end{figure}
+\end{frame}
+
